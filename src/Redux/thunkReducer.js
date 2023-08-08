@@ -8,33 +8,35 @@ const initialState = {
     error: null
 }
 
-const newsReducer = (state = initialState, action) => {
-    console.log("action", action.payload);
-    switch (action.type) {
-        case FETCH_REQUEST:
-            return {
-                ...state,
-                isLoading: true,
-                error: null
-            };
-        case FETCH_SUCCESS:
-            return {
-                ...state,
-                isLoading: false,
-                news: action.payload
-            };
-        case FETCH_FAILURE:
-            return {
-                ...state,
-                isLoading: false,
-                error: action.payload
-            };
-        default:
-            return state;
-    }
-}
+// const newsReducer = (state = initialState, action) => {
+//     console.log("action", action.payload);
+//     switch (action.type) {
+//         case FETCH_REQUEST:
+//             return {
+//                 ...state,
+//                 isLoading: true,
+//                 error: null
+//             };
+//         case FETCH_SUCCESS:
+//             return {
+//                 ...state,
+//                 isLoading: false,
+//                 news: action.payload
+//             };
+//         case FETCH_FAILURE:
+//             return {
+//                 ...state,
+//                 isLoading: false,
+//                 error: action.payload
+//             };
+//         default:
+//             return state;
+//     }
+// }
 
-export default newsReducer
+// export default newsReducer
+
+
 
 
 

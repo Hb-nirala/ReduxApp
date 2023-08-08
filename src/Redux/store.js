@@ -8,6 +8,9 @@ import editProductItemReducer from './editProductItemReducer';
 import thunk from 'redux-thunk';
 import newsReducer from './thunkReducer';
 import { configureStore } from '@reduxjs/toolkit';
+import newsSlice from './ApiCalls/newsSlice';
+import newsSlicePostData from './ApiCalls/newsSlicePost';
+
 
 
 
@@ -17,16 +20,18 @@ const rootReducer = combineReducers(
     Login: loginReducer,
     Product: productReducer,
     EditProductItem: editProductItemReducer,
-  }, newsReducer
+    users: newsSlice,
+    users_data_post: newsSlicePostData
+  }
 );
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: ['EditProductItem']
+  blacklist: ['EditProductItem', 'users', 'users_data_post']
 }
 
-const persistedReducer = persistReducer(persistConfig, rootReducer,)
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = createStore(persistedReducer, applyMiddleware(thunk))
 

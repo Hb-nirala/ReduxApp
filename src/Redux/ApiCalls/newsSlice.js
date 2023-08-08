@@ -9,26 +9,26 @@ export const newsSlice = createSlice({
     name: 'users',
     initialState: {
         data: [],
-        loading: 'idle',
+        loading: true,
         error: null,
     },
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getUsers.pending, (state, action) => {
-            if (state.loading === 'idle') {
-                state.loading = 'pending'
+            if (state.loading) {
+                state.loading = true
             }
         })
         builder.addCase(getUsers.fulfilled, (state, action) => {
-            if (state.loading === 'pending') {
+            if (state.loading) {
                 state.data = action.payload
-                state.loading = 'idle'
+                state.loading = false
             }
         })
         builder.addCase(getUsers.rejected, (state, action) => {
-            if (state.loading === 'pending') {
-                state.loading = 'idle'
-                state.error = 'Error occured'
+            if (state.loading) {
+                state.loading = false
+                state.error = action.payload
             }
         })
     },

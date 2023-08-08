@@ -1,3 +1,4 @@
+import { Dimensions } from 'react-native'
 import * as yup from 'yup'
 
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
@@ -27,26 +28,26 @@ export const signUpValidationSchema = yup.object().shape({
 })
 
 export const dataArray = [
-    { "id":"1","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"2","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"3","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"4","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"5","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"6","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"7","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"8","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"9","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"10","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"11","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"12","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"13","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"14","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"15","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"16","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"17","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"18","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"19","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-    { "id":"20","title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "1", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "2", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "3", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "4", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "5", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "6", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "7", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "8", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "9", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "10", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "11", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "12", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "13", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "14", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "15", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "16", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "17", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "18", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "19", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "20", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
@@ -81,4 +82,7 @@ export const dataArray = [
 
 export const signUpInitialValuesSchema = { fullname: '', email: '', pass: '', phone: '' }
 
-
+export const appDimension = {
+    deviceWidth: Dimensions.get('screen').width,
+    deviceHeight: Dimensions.get('screen').height
+}

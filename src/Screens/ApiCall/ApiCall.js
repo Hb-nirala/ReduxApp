@@ -3,7 +3,6 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchNews } from '../../Redux/thunkActions'
 import { fetchData, getApiCall } from '../../Redux/thunkReducer'
-import { appDimension } from '../../utils/globalConstant'
 import Icon from 'react-native-vector-icons/AntDesign'
 
 const deviceWidth = Dimensions.get('screen').width
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
     headerStyle: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: appDimension.deviceWidth * 0.65,
+        width: deviceWidth * 0.65,
         // backgroundColor:'red',
         paddingVertical: 10,
         alignSelf: 'flex-start',

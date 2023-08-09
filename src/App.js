@@ -4,15 +4,17 @@ import { Provider } from 'react-redux';
 import { persistor, store } from './Redux/store';
 import ThunkResponseData from './Screens/ApiCall/ThunkResponseData';
 import Navigator from './Navigator';
+import TwilioChatNavigator from './Navigator/User/TwilioChatNavigator';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <Navigator />
-      </PersistGate>
-    </Provider>
+
+    <NavigationContainer>
+      <TwilioChatNavigator />
+    </NavigationContainer>
+
   );
 }
 

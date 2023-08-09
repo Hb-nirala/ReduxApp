@@ -9,7 +9,7 @@ const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 
 const Home = (props) => {
-    
+
     const authorizedUserData = useSelector((state) => state.Login.value.authUserData)
     const productReducerData = useSelector((state) => state?.Product?.value?.productDataArray)
 
@@ -88,9 +88,14 @@ const Home = (props) => {
                     <Button title={'Add'} onPress={() => { props.navigation.navigate('AddProduct') }} color={'rgba(0,0,50,0.9)'} />
                 </View>
             </View>
-            <View style={styles.button}>
+            <View style={styles.viewButtonStyle}>
+                <View style={styles.button}>
                     <Button title={'Go to Api Call'} onPress={() => { props.navigation.navigate('ApiCall') }} color={'rgba(0,0,50,0.9)'} />
                 </View>
+                <View style={styles.button}>
+                    <Button title={'Go to ChatApp'} onPress={() => { props.navigation.navigate('TwilioChatNavigator', { screen: 'TwilioChatWelcomeScreen' }) }} color={'rgba(0,0,50,0.9)'} />
+                </View>
+            </View>
             <FlatList
                 data={productReducerData}
                 style={{ flex: 1 }}

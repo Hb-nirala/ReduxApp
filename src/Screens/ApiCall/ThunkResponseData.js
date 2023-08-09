@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, StyleSheet, FlatList,Dimensions } from 'react-native'
 import { getUsers } from '../../Redux/ApiCalls/newsSlice'
-import { appDimension } from '../../utils/globalConstant'
 import Icon from 'react-native-vector-icons/AntDesign'
+
+
+const deviceWidth = Dimensions.get('screen').width
+const deviceHeight = Dimensions.get('screen').height
 
 const ThunkResponseData = (props) => {
 
@@ -53,7 +56,7 @@ const styles = StyleSheet.create({
   headerStyle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: appDimension.deviceWidth * 0.7,
+    width: deviceWidth * 0.7,
     // backgroundColor:'red',
     paddingVertical: 10,
     alignSelf: 'flex-start',
@@ -74,7 +77,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   itemViewStyle: {
-    width: appDimension.deviceWidth - 20,
+    width: deviceWidth - 20,
     backgroundColor: 'rgb(0,0,50)',
     alignSelf: 'center',
     padding: 10,

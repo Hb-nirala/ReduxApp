@@ -1,6 +1,6 @@
 import React, { useState, useContext, createContext } from 'react';
 
-const defaultInitialState = { channels: [], updateChannels: () => { } };
+const defaultInitialState = { channels: [], updateChannels: (a) => { console.log("a==", a); } };
 
 const AppContext = createContext(defaultInitialState);
 

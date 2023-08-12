@@ -2,10 +2,15 @@ import { useState } from "react";
 import { Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Icon from 'react-native-vector-icons/AntDesign'
 
+
 const deviceWidth = Dimensions.get('screen').width;
 const deviceHeight = Dimensions.get('screen').height;
+
 export const WelcomeScreen = (props) => {
     const [username, setUsername] = useState('');
+
+   
+
 
     return (
         <View style={styles.screen}>
@@ -20,7 +25,6 @@ export const WelcomeScreen = (props) => {
                 onChangeText={(text) => setUsername(text)}
                 style={styles.input}
                 placeholder="Username"
-            // placeholderTextColor={colors.ghost}
             />
             <TouchableOpacity
                 disabled={!username}
@@ -52,7 +56,6 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         alignSelf: 'center',
         borderStyle: 'solid',
-        borderColor: 'black',
         borderWidth: 1,
         borderRadius: 10,
         paddingHorizontal: 10,

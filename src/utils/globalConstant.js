@@ -92,3 +92,474 @@
 //     TWILIO_API_SECRET: 'mGYazBErl91exQ0qWKpyPdCK8RH8lPDv',
 //     TWILIO_CHAT_SERVICE_SID: 'IS8a345a392acb4a3a93988935e864db01'
 // }
+
+
+
+
+// {
+//     "_events": {
+//       "updated": [
+//         Functionanonymous
+//       ]
+//     },
+//     "_eventsCount": 1,
+//     "_maxListeners": undefined,
+//     "configuration": {
+//       "backoffConfiguration": {
+//         "max": 4000,
+//         "maxAttemptsCount": 3,
+//         "min": 1000
+//       },
+//       "channelMetadataCacheCapacity": 100,
+//       "consumptionReportInterval": 1,
+//       "httpCacheInterval": 1,
+//       "limits": {
+//         "emailBodiesAllowedContentTypes": [
+//           Array
+//         ],
+//         "emailHistoriesAllowedContentTypes": [
+//           Array
+//         ],
+//         "mediaAttachmentSizeLimitInMb": 150,
+//         "mediaAttachmentsCountLimit": 10,
+//         "mediaAttachmentsTotalSizeLimitInMb": 150
+//       },
+//       "links": {
+//         "conversations": "https://aim.us1.twilio.com/Client/v2/Services/IS8a345a392acb4a3a93988935e864db01/Conversations",
+//         "currentUser": "https://aim.us1.twilio.com/Client/v2/Services/IS8a345a392acb4a3a93988935e864db01/Users/US78d7d101965c44edb9be666cb2503562",
+//         "mediaService": "https://mcs.us1.twilio.com/v1/Services/IS8a345a392acb4a3a93988935e864db01/Media",
+//         "mediaSetService": "https://mcs.us1.twilio.com/v1/Services/IS8a345a392acb4a3a93988935e864db01/MediaSet",
+//         "messagesReceipts": "https://aim.us1.twilio.com/Client/v2/Services/IS8a345a392acb4a3a93988935e864db01/Conversations/%s/Messages/%s/Receipts",
+//         "myConversations": "https://aim.us1.twilio.com/Client/v2/Services/IS8a345a392acb4a3a93988935e864db01/Users/US78d7d101965c44edb9be666cb2503562/Conversations",
+//         "typing": "https://aim.us1.twilio.com/v1/Instances/IS8a345a392acb4a3a93988935e864db01/Typing",
+//         "users": "https://aim.us1.twilio.com/Client/v2/Services/IS8a345a392acb4a3a93988935e864db01/Users"
+//       },
+//       "myConversations": "nirala.channels",
+//       "productId": "ip_messaging",
+//       "reachabilityEnabled": true,
+//       "retryWhenThrottled": true,
+//       "typingIndicatorTimeoutDefault": 5000,
+//       "typingIndicatorTimeoutOverride": undefined,
+//       "userIdentity": "nirala",
+//       "userInfo": "US78d7d101965c44edb9be666cb2503562.info",
+//       "userInfosToSubscribe": 100
+//     },
+//     "conversation": {
+//       "_configuration": {
+//         "backoffConfiguration": [
+//           Object
+//         ],
+//         "channelMetadataCacheCapacity": 100,
+//         "consumptionReportInterval": 1,
+//         "httpCacheInterval": 1,
+//         "limits": [
+//           Object
+//         ],
+//         "links": [
+//           Object
+//         ],
+//         "myConversations": "nirala.channels",
+//         "productId": "ip_messaging",
+//         "reachabilityEnabled": true,
+//         "retryWhenThrottled": true,
+//         "typingIndicatorTimeoutDefault": 5000,
+//         "typingIndicatorTimeoutOverride": undefined,
+//         "userIdentity": "nirala",
+//         "userInfo": "US78d7d101965c44edb9be666cb2503562.info",
+//         "userInfosToSubscribe": 100
+//       },
+//       "_dataSource": "sync",
+//       "_entity": {
+//         "_events": [
+//           Object
+//         ],
+//         "_eventsCount": 2,
+//         "_maxListeners": undefined,
+//         "closed": false,
+//         "domain": null,
+//         "syncDocumentImpl": [
+//           SyncDocumentImpl
+//         ],
+//         "uuid": "4c022212-8843-45a7-afac-40b351a97515"
+//       },
+//       "_entityName": "CH9000bf48e64b45a0b5e4626a0ad933bf.channel",
+//       "_entityPromise": {
+//         "_h": 2,
+//         "_i": 1,
+//         "_j": [
+//           SyncDocument
+//         ],
+//         "_k": null
+//       },
+//       "_events": {
+//         "messageAdded": [
+//           Functionanonymous
+//         ],
+//         "messageRemoved": [
+//           Functionanonymous
+//         ],
+//         "messageUpdated": [
+//           Functionanonymous
+//         ],
+//         "participantJoined": [
+//           Functionanonymous
+//         ],
+//         "participantLeft": [
+//           Functionanonymous
+//         ],
+//         "participantUpdated": [
+//           Functionanonymous
+//         ],
+//         "removed": [
+//           Functionanonymous
+//         ],
+//         "typingEnded": [
+//           Functionanonymous
+//         ],
+//         "typingStarted": [
+//           Functionanonymous
+//         ],
+//         "updated": [
+//           Functionanonymous
+//         ]
+//       },
+//       "_eventsCount": 10,
+//       "_internalState": {
+//         "attributes": [
+//           Object
+//         ],
+//         "bindings": [
+//           Object
+//         ],
+//         "createdBy": "nirala",
+//         "dateCreated": 2023-08-12T06: 18: 07.299Z,
+//         "dateUpdated": 2023-08-12T06: 18: 07.299Z,
+//         "friendlyName": "Abhi",
+//         "lastMessage": [
+//           Object
+//         ],
+//         "lastReadMessageIndex": null,
+//         "notificationLevel": "default",
+//         "state": [
+//           Object
+//         ],
+//         "status": "joined",
+//         "uniqueName": "Abhi"
+//       },
+//       "_links": {
+//         "messages": "https://aim.us1.twilio.com/Client/v2/Services/IS8a345a392acb4a3a93988935e864db01/Conversations/CH9000bf48e64b45a0b5e4626a0ad933bf/Messages",
+//         "participants": "https://aim.us1.twilio.com/Client/v2/Services/IS8a345a392acb4a3a93988935e864db01/Conversations/CH9000bf48e64b45a0b5e4626a0ad933bf/Participants",
+//         "self": "https://aim.us1.twilio.com/Client/v2/Services/IS8a345a392acb4a3a93988935e864db01/Conversations/CH9000bf48e64b45a0b5e4626a0ad933bf"
+//       },
+//       "_maxListeners": undefined,
+//       "_messagesEntity": {
+//         "_events": [
+//           Object
+//         ],
+//         "_eventsCount": 3,
+//         "_maxListeners": undefined,
+//         "configuration": [
+//           Configuration
+//         ],
+//         "conversation": [
+//           Circular
+//         ],
+//         "domain": null,
+//         "eventHistory": [
+//           Map
+//         ],
+//         "messagesByIndex": [
+//           Map
+//         ],
+//         "messagesListPromise": [
+//           Promise
+//         ],
+//         "services": [
+//           ClientServices
+//         ]
+//       },
+//       "_participants": Map{
+//         "MB3418992158fa4da0bfadb188908e3923"=>[
+//           Participant
+//         ]
+//       },
+//       "_participantsEntity": {
+//         "_events": [
+//           Object
+//         ],
+//         "_eventsCount": 3,
+//         "_maxListeners": undefined,
+//         "configuration": [
+//           Configuration
+//         ],
+//         "conversation": [
+//           Circular
+//         ],
+//         "domain": null,
+//         "eventHistory": [
+//           Map
+//         ],
+//         "links": [
+//           Object
+//         ],
+//         "participants": [
+//           Map
+//         ],
+//         "rosterEntityPromise": [
+//           Promise
+//         ],
+//         "services": [
+//           ClientServices
+//         ]
+//       },
+//       "_services": {
+//         "channelMetadataClient": [
+//           ChannelMetadataClient
+//         ],
+//         "commandExecutor": [
+//           CommandExecutor
+//         ],
+//         "contentClient": [
+//           ContentClient
+//         ],
+//         "mcsClient": [
+//           _class
+//         ],
+//         "network": [
+//           Network
+//         ],
+//         "notificationClient": [
+//           _class
+//         ],
+//         "syncClient": [
+//           Client
+//         ],
+//         "transport": [
+//           _class
+//         ],
+//         "twilsockClient": [
+//           _class
+//         ],
+//         "typingIndicator": [
+//           TypingIndicator
+//         ],
+//         "users": [
+//           Users
+//         ]
+//       },
+//       "domain": null,
+//       "eventHistory": Map{
+//         "updated"=>[
+//           Array
+//         ],
+//         "messageAdded"=>[
+//           Array
+//         ]
+//       },
+//       "sid": "CH9000bf48e64b45a0b5e4626a0ad933bf"
+//     },
+//     "domain": null,
+//     "eventHistory": Map{
+      
+//     },
+//     "links": {
+//       "conversation": "https://aim.us1.twilio.com/Client/v2/Services/IS8a345a392acb4a3a93988935e864db01/Conversations/CH9000bf48e64b45a0b5e4626a0ad933bf",
+//       "messages_receipts": "https://aim.us1.twilio.com/Client/v2/Services/IS8a345a392acb4a3a93988935e864db01/Conversations/CH9000bf48e64b45a0b5e4626a0ad933bf/Messages/IM0a8b10cac1514531a24c40c869b7e23b/Receipts",
+//       "self": "https://aim.us1.twilio.com/Client/v2/Services/IS8a345a392acb4a3a93988935e864db01/Conversations/CH9000bf48e64b45a0b5e4626a0ad933bf/Messages/IM0a8b10cac1514531a24c40c869b7e23b"
+//     },
+//     "services": {
+//       "channelMetadataClient": {
+//         "_cache": [
+//           QuickLRU
+//         ],
+//         "_configuration": [
+//           Configuration
+//         ],
+//         "_services": [
+//           Circular
+//         ]
+//       },
+//       "commandExecutor": {
+//         "_productId": "ip_messaging",
+//         "_serviceUrl": "https://aim.us1.twilio.com",
+//         "_services": [
+//           Object
+//         ]
+//       },
+//       "contentClient": {
+//         "_cacheTtlMs": 5000,
+//         "_cachedTemplates": null,
+//         "_pageSize": 100,
+//         "_services": [
+//           Circular
+//         ]
+//       },
+//       "mcsClient": {
+//         "config": [
+//           Configuration
+//         ],
+//         "network": [
+//           Network
+//         ],
+//         "options": [
+//           Object
+//         ],
+//         "transport": [
+//           Transport
+//         ]
+//       },
+//       "network": {
+//         "cache": [
+//           Map
+//         ],
+//         "cacheLifetime": 100,
+//         "configuration": [
+//           Configuration
+//         ],
+//         "services": [
+//           Circular
+//         ],
+//         "timer": 2647
+//       },
+//       "notificationClient": {
+//         "_events": [
+//           Object
+//         ],
+//         "_eventsCount": 1,
+//         "_maxListeners": undefined,
+//         "connectors": [
+//           Map
+//         ],
+//         "domain": null
+//       },
+//       "syncClient": {
+//         "_events": [
+//           Object
+//         ],
+//         "_eventsCount": 0,
+//         "_maxListeners": undefined,
+//         "domain": null,
+//         "entities": [
+//           EntitiesCache
+//         ],
+//         "services": [
+//           Object
+//         ]
+//       },
+//       "transport": {
+//         "_events": [
+//           Object
+//         ],
+//         "_eventsCount": 5,
+//         "_maxListeners": undefined,
+//         "channel": [
+//           TwilsockChannel
+//         ],
+//         "config": [
+//           Configuration
+//         ],
+//         "domain": null,
+//         "offlineStorageDeferred": [
+//           Deferred
+//         ],
+//         "registrations": [
+//           Registrations
+//         ],
+//         "telemetryTracker": [
+//           TelemetryTracker
+//         ],
+//         "upstream": [
+//           Upstream
+//         ],
+//         "version": "0.12.2"
+//       },
+//       "twilsockClient": {
+//         "_events": [
+//           Object
+//         ],
+//         "_eventsCount": 5,
+//         "_maxListeners": undefined,
+//         "channel": [
+//           TwilsockChannel
+//         ],
+//         "config": [
+//           Configuration
+//         ],
+//         "domain": null,
+//         "offlineStorageDeferred": [
+//           Deferred
+//         ],
+//         "registrations": [
+//           Registrations
+//         ],
+//         "telemetryTracker": [
+//           TelemetryTracker
+//         ],
+//         "upstream": [
+//           Upstream
+//         ],
+//         "version": "0.12.2"
+//       },
+//       "typingIndicator": {
+//         "configuration": [
+//           Configuration
+//         ],
+//         "getConversation": [
+//           Functionbound
+//         ],
+//         "sentUpdates": [
+//           Map
+//         ],
+//         "serviceTypingTimeout": null,
+//         "services": [
+//           Circular
+//         ]
+//       },
+//       "users": {
+//         "_events": [
+//           Object
+//         ],
+//         "_eventsCount": 3,
+//         "_maxListeners": undefined,
+//         "configuration": [
+//           Configuration
+//         ],
+//         "domain": null,
+//         "eventHistory": [
+//           Map
+//         ],
+//         "fifoStack": [
+//           Array
+//         ],
+//         "myself": [
+//           User
+//         ],
+//         "services": [
+//           Circular
+//         ],
+//         "subscribedUsers": [
+//           Map
+//         ]
+//       }
+//     },
+//     "state": {
+//       "aggregatedDeliveryReceipt": null,
+//       "attributes": {
+        
+//       },
+//       "author": "nirala",
+//       "body": "Hii Nirala",
+//       "contentSid": null,
+//       "dateUpdated": 2023-08-12T06: 18: 36.897Z,
+//       "hasChannelMetadata": false,
+//       "index": 0,
+//       "lastUpdatedBy": null,
+//       "media": null,
+//       "medias": null,
+//       "participantSid": "MB3418992158fa4da0bfadb188908e3923",
+//       "sid": "IM0a8b10cac1514531a24c40c869b7e23b",
+//       "subject": null,
+//       "timestamp": 2023-08-12T06: 18: 36.897Z,
+//       "type": "text"
+//     }
+//   }

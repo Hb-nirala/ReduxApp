@@ -1,6 +1,9 @@
 import { View, Text, Button, StyleSheet } from 'react-native'
 import React from 'react'
-import { appDimension } from '../../utils/globalConstant'
+import { Dimensions } from 'react-native'
+
+const deviceWidth = Dimensions.get('screen').width;
+const deviceHeight = Dimensions.get('screen').height;
 
 const ReactButton = ({ style, onPress, buttonTitle, color }) => {
   return (
@@ -12,7 +15,7 @@ const ReactButton = ({ style, onPress, buttonTitle, color }) => {
 const styles = StyleSheet.create({
   button: {
     marginVertical: 30,
-    width: appDimension.deviceWidth / 2,
+    width: deviceWidth / 2,
     borderRadius:15,
   },
 })

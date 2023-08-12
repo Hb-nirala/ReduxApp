@@ -6,6 +6,7 @@ import ApiResponse from '../../Screens/ApiResponse';
 import ApiCall from '../../Screens/ApiCall/ApiCall';
 import ThunkResponseData from '../../Screens/ApiCall/ThunkResponseData';
 import ThunkPostData from '../../Screens/ApiCall/ThunkPostData';
+import TwilioChatNavigator from './TwilioChatNavigator';
 
 
 const Stack = createStackNavigator();
@@ -19,6 +20,7 @@ const UserNavigator = () => {
             <Stack.Screen name="ApiCall" component={ApiCall} options={{ headerShown: false }} />
             <Stack.Screen name="ThunkResponseData" component={ThunkResponseData} options={{ headerShown: false }} />
             <Stack.Screen name="ThunkPostData" component={ThunkPostData} options={{ headerShown: false }} />
+            <Stack.Screen name="TwilioChatNavigator" component={TwilioChatNavigator} options={{ headerShown: false }} />
         </Stack.Navigator >
     )
 }

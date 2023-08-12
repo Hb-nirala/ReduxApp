@@ -1,10 +1,13 @@
-import { View, Text, StyleSheet, TextInput } from 'react-native'
+import { View, Text, StyleSheet, TextInput, Dimensions } from 'react-native'
 import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/AntDesign'
-import { appDimension } from '../../utils/globalConstant'
 import ReactButton from '../../components/Buttons/ReactButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { postUsersData } from '../../Redux/ApiCalls/newsSlicePost'
+
+
+const deviceWidth = Dimensions.get('screen').width
+const deviceHeight = Dimensions.get('screen').height
 
 const ThunkPostData = (props) => {
 
@@ -67,7 +70,7 @@ const styles = StyleSheet.create({
     headerStyle: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: appDimension.deviceWidth * 0.6,
+        width: deviceWidth * 0.6,
         // backgroundColor:'red',
         paddingVertical: 10,
         alignSelf: 'flex-start',
@@ -81,7 +84,7 @@ const styles = StyleSheet.create({
     },
     input: {
         backgroundColor: 'white',
-        width: appDimension.deviceWidth - 20,
+        width: deviceWidth - 20,
         marginVertical: 10,
         alignSelf: 'center',
         borderStyle: 'solid',

@@ -55,7 +55,7 @@ export const ChatCreateScreen = ({ navigation, route }) => {
                 value={channelName}
                 onChangeText={(text) => setChannelName(text)}
                 style={styles.input}
-                placeholder="Channel Name"
+                placeholder="Enter Channel Name"
             />
             <TouchableOpacity style={styles.button} onPress={onCreateOrJoin}>
                 <Text style={styles.buttonText}>Create Or Join</Text>

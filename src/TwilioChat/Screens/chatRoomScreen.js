@@ -18,12 +18,7 @@ export const ChatRoomScreen = ({ navigation, route }) => {
         chatClientChannel.current.on('messageAdded', (message) => {
             const newMessage = TwilioService.getInstance().parseMessage(message);
             console.log("newMessage==", newMessage);
-            const { giftedId } = Message.attributes;
-            if (giftedId) {
-                setMessages((prevMessages) => prevMessages.filter((m) => (m._id === giftedId ? newMessage : m)));
-            } else {
-                setMessages((prevMessages) => [newMessage, ...prevMessages]);
-            }
+        
         });
         return chatClientChannel.current;
     }, []);
@@ -43,9 +38,9 @@ export const ChatRoomScreen = ({ navigation, route }) => {
     }, [channelId, setChannelEvents]);
 
     const onSend = useCallback((newMessages = []) => {
-        const attributes = { giftedId: newMessages[0]._id };
-        setMessages((prevMessages) => GiftedChat.append(prevMessages, newMessages));
-        chatClientChannel.current?.sendMessage(newMessages[0].text, attributes);
+  
+        setMessages((prevMessages) => GiftedChat.append(prevMessages, newMessages)); 
+        chatClientChannel.current?.sendMessage(newMessages[0].text);
         // chatClientChannel.current?.sendMessage(newMessages[0].text);
     }, []);
 
@@ -63,9 +58,9 @@ export const ChatRoomScreen = ({ navigation, route }) => {
             <View style={styles.channelInfoStyle}>
                 <Icon name='arrowleft' size={25} onPress={() => { navigation.goBack() }} color='black' style={{ marginLeft: 10, marginTop: 10 }} />
                 <View>
-                    <Text>{channelId}</Text>
-                    <Text>{identity}</Text>
-                    <Text>{channelName}</Text>
+                    <Text>channelId:-{channelId}</Text>
+                    <Text>identity:-{identity}</Text>
+                    <Text>channelName:-{channelName}</Text>
                 </View>
             </View>
             <GiftedChat

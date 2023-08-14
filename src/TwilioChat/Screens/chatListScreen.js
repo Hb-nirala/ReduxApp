@@ -11,7 +11,6 @@ import { Client } from '@twilio/conversations';
 
 const deviceWidth = Dimensions.get('screen').width;
 const deviceHeight = Dimensions.get('screen').height;
-// const client = require('twilio')('ACda998d40424002c207a695612e8e2c42', '35590d434d4bb50cf931701662bcfb89');
 
 export const ChatListScreen = ({ navigation, route }) => {
     const { username } = route.params;
@@ -21,6 +20,13 @@ export const ChatListScreen = ({ navigation, route }) => {
     const [conversations, setConversations] = useState([])
 
     console.log("channels===", channels);
+
+    // useEffect(() => {
+    //     if (username) {
+    //         console.log("channels===????", channels);
+    //     }
+    // }, [channels])
+
     const setChannelEvents = useCallback(
         (client) => {
             client.on('messageAdded', (message) => {
@@ -38,14 +44,15 @@ export const ChatListScreen = ({ navigation, route }) => {
     );
 
     const getSubscribedChannels = useCallback(
-        (client) =>
-            client.getSubscribedConversations().then((paginator) => {
-                channelPaginator.current = paginator;
-                const newChannels = TwilioService.getInstance().parseChannels(channelPaginator.current.items);
-                console.log("newChannels=>>>>>", newChannels);
-                updateChannels(newChannels);
-            }),
-        [],
+        // (client) =>
+        //     client.getSubscribedConversations().then((paginator) => {
+        //         channelPaginator.current = paginator;
+        //         console.log("channelPaginator.current.items==", channelPaginator.current.items);
+        //         const newChannels = TwilioService.getInstance().parseChannels(channelPaginator.current.items);
+        //         console.log("newChannels=>>>>>", newChannels);
+        //         updateChannels(newChannels);
+        //     }),
+        // [],
     );
 
 
@@ -127,7 +134,7 @@ export const ChatListScreen = ({ navigation, route }) => {
                 style={[styles.button]}
                 onPress={() => { navigation.navigate('TwilioChatCreateScreen', { username }) }}
             >
-                <Text style={styles.buttonText}>Chat Channel</Text>
+                <Text style={styles.buttonText}>Create New Channel</Text>
             </TouchableOpacity>
         </View>
     );

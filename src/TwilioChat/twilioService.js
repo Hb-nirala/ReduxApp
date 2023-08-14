@@ -22,7 +22,7 @@ export class TwilioService {
             console.log("twilioToken==2", twilioToken);
             try {
                 const client = new Client(twilioToken);
-                console.log("client==", client);
+                console.log("client==", client); 
                 TwilioService.chatClient = client;
                 // console.log('TwilioService.chatClient',TwilioService.chatClient);
                 return TwilioService.chatClient;
@@ -98,7 +98,7 @@ export class TwilioService {
     }
 
     parseMessage(message) {
-        console.log("message===", message);
+        // console.log("message===", message.conversation._internalState.friendlyName);
         const messageInfo = {
             _id: message.sid,
             text: message.body,
@@ -108,6 +108,7 @@ export class TwilioService {
                 name: message.author,
             },
             received: true,
+            friendlyName: message.conversation._internalState.friendlyName,
         }
         console.log("messageInfo==>>", messageInfo);
         return messageInfo
@@ -157,4 +158,20 @@ export class TwilioService {
     //     TwilioService.chatClient?.shutdown();
     //     TwilioService.chatClient = null;
     // }
+
+    //Add participants--------------
+    addMembersInChannel(channelID, chatUserIdentity) {
+        try {
+            const client = ('ACda998d40424002c207a695612e8e2c42', '35590d434d4bb50cf931701662bcfb89')
+            client.conversations.v1.conversations(channelID)
+                .participants
+                .create({ identity: chatUserIdentity })
+                .then(participant => {
+                    console.log("participant.sid", participant.sid);
+                });
+        } catch (error) {
+            console.log("addMembersInChannelerror===",error);
+        }
+
+    }
 }

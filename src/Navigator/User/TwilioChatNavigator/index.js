@@ -4,6 +4,7 @@ import { WelcomeScreen } from '../../../TwilioChat/Screens/Welcome';
 import { ChatListScreen } from '../../../TwilioChat/Screens/chatListScreen';
 import { ChatCreateScreen } from '../../../TwilioChat/Screens/chatCreateScreen';
 import { ChatRoomScreen } from '../../../TwilioChat/Screens/chatRoomScreen';
+import AddParticipants from '../../../TwilioChat/Screens/addParticipants';
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,7 @@ const TwilioChatNavigator = () => {
             <Stack.Screen name="TwilioChatListScreen" component={ChatListScreen} options={{ headerShown: false }} />
             <Stack.Screen name="TwilioChatCreateScreen" component={ChatCreateScreen} options={{ headerShown: false }} />
             <Stack.Screen name="TwilioChatRoomScreen" component={ChatRoomScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="TwilioParticipantScreen" component={AddParticipants} options={{ headerShown: false }} />
         </Stack.Navigator >
     )
 }

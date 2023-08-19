@@ -1,90 +1,123 @@
-// // import * as yup from 'yup'
+import * as yup from 'yup'
 
-// // const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
-// // const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-// // const fullNameRegex = /^[A-Za-z]+(?:\s[A-Za-z]+)*$/
-// // const phoneNumberRegex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
-// // export const loginValidationSchema = yup.object().shape({
-// //     email: yup.string().matches(emailRegex, "please enter valid email")
-// //         .required('please enter email'),
+const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+const fullNameRegex = /^[A-Za-z]+(?:\s[A-Za-z]+)*$/
+const phoneNumberRegex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
+export const loginValidationSchema = yup.object().shape({
+    email: yup.string().matches(emailRegex, "please enter valid email")
+        .required('please enter email'),
 
-// //     //Minimum eight characters, at least one letter, one number and one special character:
-// //     pass: yup.string().matches(passwordRegex, "please enter valid password")
-// //         .required('please enter password'),
-// // })
-// // export const loginInitialValuesSchema = { email: '', pass: '' }
+    //Minimum eight characters, at least one letter, one number and one special character:
+    pass: yup.string().matches(passwordRegex, "please enter valid password")
+        .required('please enter password'),
+})
+export const loginInitialValuesSchema = { email: '', pass: '' }
 
-// // export const signUpValidationSchema = yup.object().shape({
-// //     fullname: yup.string().matches(fullNameRegex, "please enter valid Name")
-// //         .required('please enter Name'),
-// //     email: yup.string().matches(emailRegex, "please enter valid email")
-// //         .required('please enter email'),
-// //     //Minimum eight characters, at least one letter, one number and one special character:
-// //     pass: yup.string().matches(passwordRegex, "please enter valid password")
-// //         .required('please enter password'),
-// //     phone: yup.string().matches(phoneNumberRegex, "please enter valid Mobile No.")
-// //         .required('please enter Mobile No.'),
-// // })
+export const signUpValidationSchema = yup.object().shape({
+    fullname: yup.string().matches(fullNameRegex, "please enter valid Name")
+        .required('please enter Name'),
+    email: yup.string().matches(emailRegex, "please enter valid email")
+        .required('please enter email'),
+    //Minimum eight characters, at least one letter, one number and one special character:
+    pass: yup.string().matches(passwordRegex, "please enter valid password")
+        .required('please enter password'),
+    phone: yup.string().matches(phoneNumberRegex, "please enter valid Mobile No.")
+        .required('please enter Mobile No.'),
+})
 
-// export const dataArray = [
-//     { "id": "1", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "2", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "3", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "4", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "5", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "6", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "7", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "8", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "9", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "10", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "11", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "12", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "13", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "14", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "15", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "16", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "17", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "18", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "19", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     { "id": "20", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-//     // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
-// ]
+export const cartItemArray = [
+    {
+        "id": "1",
+        "itemName": 'Apple',
+        "itemImage": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyc7erdKt0noSwc9H0NTv3aDuauMrcB7L9eg&usqp=CAU',
+        "itemPrice": 300,
+    },
+    {
+        "id": "2",
+        "itemName": 'Bike',
+        "itemImage": 'https://m.media-amazon.com/images/I/71d-JDP6JsL._AC_UF1000,1000_QL80_.jpg',
+        "itemPrice": 2500,
+    },
+    {
+        "id": "3",
+        "itemName": 'Bus',
+        "itemImage": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRUabakdjkdSaJny6zZ27B4ZI-IxtC_96Q_g&usqp=CAU',
+        "itemPrice": 5000,
+    },
+    {
+        "id": "4",
+        "itemName": 'Pizza',
+        "itemImage": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPbgJcJyG8w-YdcBsvwrgVQIv8b5TMhMRL1w&usqp=CAU',
+        "itemPrice": 550,
+    },
+    {
+        "id": "5",
+        "itemName": 'Tomato',
+        "itemImage": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpnStYUhUu0NH87Elz8YFKUMR1_vHcWiZ7tg&usqp=CAU',
+        "itemPrice": 200,
+    },
+]
 
-// export const signUpInitialValuesSchema = { fullname: '', email: '', pass: '', phone: '' }
+export const dataArray = [
+    { "id": "1", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "2", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "3", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "4", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "5", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "6", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "7", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "8", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "9", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "10", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "11", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "12", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "13", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "14", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "15", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "16", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "17", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "18", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "19", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    { "id": "20", "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+    // { "title": "Ms", "first": "Alexandra", "last": "Ward", "email": "alexandra.ward@example.com" },
+]
 
-// // export const appDimension = {
-// //     deviceWidth: Dimensions.get('screen').width,
-// //     deviceHeight: Dimensions.get('screen').height
-// // }
+export const signUpInitialValuesSchema = { fullname: '', email: '', pass: '', phone: '' }
+
+// export const appDimension = {
+//     deviceWidth: Dimensions.get('screen').width,
+//     deviceHeight: Dimensions.get('screen').height
+// }
 
 // const TwilioChat = {
 //     TWILIO_ACCOUNT_SID: 'ACda998d40424002c207a695612e8e2c42',

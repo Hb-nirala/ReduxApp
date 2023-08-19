@@ -1,11 +1,12 @@
 import { View, Text, FlatList, StyleSheet, Dimensions, Alert, Button, Image, ActivityIndicator, RefreshControl } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { dataArray } from '../utils/globalConstant'
+import Icon from 'react-native-vector-icons/AntDesign'
 import axios from 'axios'
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 
-const ApiResponse = () => {
+const ApiResponse = (props) => {
     //pagination with api response
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -62,7 +63,7 @@ const ApiResponse = () => {
         setIsLoading(true);
         setCurrentPage(1)
         if (currentPage === 1) {
-            console.log("currentPage===>",currentPage);
+            console.log("currentPage===>", currentPage);
             getUsers()
             // await axios.get(`https://randomuser.me/api/?page=${currentPage}&results=10`)
             //     .then(res => {
@@ -314,7 +315,10 @@ const ApiResponse = () => {
 
     return (
         <View style={styles.viewStyle}>
-            <Text style={styles.textStyle}>{'Api Response'}</Text>
+            <View style={styles.headerViewStyle}>
+                <Icon name='arrowleft' size={25} onPress={() => { props.navigation.navigate('Home') }} color='black' style={{ marginLeft: 10, marginTop: 10 }} />
+                <Text style={styles.textStyle}>{'Api Response'}</Text>
+            </View>
             {/**static array data flatlist */}
             {/* <FlatList
                 data={staticArray}
@@ -413,5 +417,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingBottom: 10,
     },
+    headerViewStyle: {
+        flexDirection: 'row',
+        width: deviceWidth * 0.7,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        alignSelf: 'flex-start'
+    }
 })
 export default ApiResponse

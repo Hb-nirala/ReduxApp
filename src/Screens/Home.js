@@ -96,6 +96,9 @@ const Home = (props) => {
                     <Button title={'Go to ChatApp'} onPress={() => { props.navigation.navigate('TwilioChatNavigator', { screen: 'TwilioChatWelcomeScreen' }) }} color={'rgba(0,0,50,0.9)'} />
                 </View>
             </View>
+            <View style={styles.button}>
+                <Button title={'Go to Cart'} onPress={() => { props.navigation.navigate('Cart') }} color={'rgba(0,0,50,0.9)'} />
+            </View>
             <FlatList
                 data={productReducerData}
                 style={{ flex: 1 }}

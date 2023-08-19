@@ -6,13 +6,9 @@ import loginReducer from './loginReducer';
 import productReducer from './productReducer';
 import editProductItemReducer from './editProductItemReducer';
 import thunk from 'redux-thunk';
-import newsReducer from './thunkReducer';
-import { configureStore } from '@reduxjs/toolkit';
 import newsSlice from './ApiCalls/newsSlice';
 import newsSlicePostData from './ApiCalls/newsSlicePost';
-
-
-
+import cartReducer from './CartRedux/CartReducer';
 
 const rootReducer = combineReducers(
   {
@@ -21,41 +17,20 @@ const rootReducer = combineReducers(
     Product: productReducer,
     EditProductItem: editProductItemReducer,
     users: newsSlice,
-    users_data_post: newsSlicePostData
-  }
+    users_data_post: newsSlicePostData,
+    cartReducer
+  },
 );
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: ['EditProductItem', 'users', 'users_data_post']
+  blacklist: ['EditProductItem', 'users', 'users_data_post', 'cartReducer']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = createStore(persistedReducer, applyMiddleware(thunk))
 
-// reducer: {
-//   news: newsReducer, // Add your newsSlice reducer
-// },
-
-// export const store = configureStore({
-//   reducer: {
-//     persistedReducer
-//   },
-// }, applyMiddleware(thunk)
-// )
-
-
 export const persistor = persistStore(store)
 
-
-// import { configureStore } from '@reduxjs/toolkit'
-// import newsSlice from './newsSlice'
-
-// const store = configureStore({
-//   reducer: {
-//     users: newsSlice,
-//   },
-// })
-// export default store

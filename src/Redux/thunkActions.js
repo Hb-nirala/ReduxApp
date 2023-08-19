@@ -1,5 +1,3 @@
-import { createSlice } from "@reduxjs/toolkit";
-
 export const FETCH_REQUEST = 'FETCH_NEWS_REQUEST';
 export const FETCH_SUCCESS = 'FETCH_NEWS_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_NEWS_FAILURE';

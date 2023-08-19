@@ -1,6 +1,5 @@
 import { ADD_TODO } from "./ToDoAction";
 
-
 const initialState = {
     todos: []
 };

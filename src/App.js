@@ -1,20 +1,16 @@
 import * as React from 'react';
-import TwilioChatNavigator from './Navigator/User/TwilioChatNavigator';
-import { NavigationContainer } from '@react-navigation/native';
-import { AppProvider } from './TwilioChat/AppContext';
-import FlashMessage from 'react-native-flash-message';
-
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import Navigator from './Navigator';
+import { persistor, store } from './Redux/store';
 
 const App = () => {
   return (
-
-    <NavigationContainer>
-      <AppProvider>
-        <TwilioChatNavigator />
-        <FlashMessage position="bottom" />
-      </AppProvider>
-    </NavigationContainer>
-
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <Navigator />
+      </PersistGate>
+    </Provider>
   );
 }
 

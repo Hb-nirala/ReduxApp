@@ -15,6 +15,8 @@ const Home = (props) => {
 
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', backButtonHandler)
+        // BackHandler.exitApp()
+        // return () => BackHandler.removeEventListener('hardwareBackPress', backButtonHandler)
     }, [])
 
     const backButtonHandler = () => {

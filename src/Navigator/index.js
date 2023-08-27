@@ -1,10 +1,10 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import UserNavigator from './User';
 import Splash from '../Screens/Splash';
 import AuthNavigator from './Auth';
 import Login from '../Screens/Login';
+import UserNavigator from './User/TabNavigator';
 
 const Stack = createStackNavigator();
 

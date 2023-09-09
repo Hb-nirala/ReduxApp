@@ -26,7 +26,7 @@ const YoutubeVideos = () => {
       <View>
         <YoutubePlayer
           webViewStyle={{ marginHorizontal: 10 }}
-          height={400}
+          height={700}
           width={deviceWidth}
           play={playing}
           videoId={"Ezh4aL9JXFM"}

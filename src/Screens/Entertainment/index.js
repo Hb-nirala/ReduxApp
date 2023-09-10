@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Linking, TouchableOpacity, Dimensions, Image, Alert, Button, BackHandler, Platform } from 'react-native'
 import React, { useState, useCallback, useEffect } from 'react'
 import Icon from 'react-native-vector-icons/AntDesign';
+import ReactButton from '../../components/Buttons/ReactButton';
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
@@ -33,6 +34,10 @@ const Entertainment = (props) => {
             >
                 <Text>Youtube</Text>
             </TouchableOpacity>
+            <ReactButton
+                onPress={() => { props.navigation.navigate('Music') }}
+                buttonTitle={'Music Enjoy'}
+            />
         </View>
     )
 }

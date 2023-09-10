@@ -24,7 +24,7 @@ const Splash = (props) => {
                 <Image
                     style={styles.imageStyle}
                     resizeMode='cover'
-                    source={require('../utils/Assets/Images/Splash_Image.png')}
+                    source={require('../../assets/Images/Splash_Image.png')}
                 />
                 <Text style={styles.textStyle}>Redux App</Text>
             </View>

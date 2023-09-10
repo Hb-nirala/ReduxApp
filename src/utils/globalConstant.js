@@ -596,3 +596,25 @@ export const signUpInitialValuesSchema = { fullname: '', email: '', pass: '', ph
 //       "type": "text"
 //     }
 //   }
+
+export const musicListArray = [
+    {
+        id: '1',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmPV78qAaxSknKZmaVayk3FhrfIKGZVogIaK1LRTYVdLjlKY0lV0dnitk&s',
+        name: 'Sample-1',
+        url: require('../../assets/Songs/Sample-1.mp3'),
+        title: 'Fluidity',
+        artist: 'tobylane',
+        duration: 10,
+    },
+    {
+        id: '2',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmPV78qAaxSknKZmaVayk3FhrfIKGZVogIaK1LRTYVdLjlKY0lV0dnitk&s',
+        name: 'Sample-2',
+        url: require('../../assets/Songs/Sample-2.mp3'),
+        title: 'Fluidity',
+        artist: 'tobylane',
+        duration: 15,
+    },
+]
+

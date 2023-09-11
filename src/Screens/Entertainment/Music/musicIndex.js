@@ -6,68 +6,68 @@ import TrackPlayer,{State,Capability,AppKilledPlaybackBehavior,RepeatMode} from 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 const Music = () => {
-    const [isPlayerReady, setIsPlayerReady] = useState(false);
+    // const [isPlayerReady, setIsPlayerReady] = useState(false);
 
-    const setupPlayer = async () => {
-        let isSetup = false;
-        try {
-            await TrackPlayer.getCurrentTrack();
-            isSetup = true;
-        }
-        catch {
-            await TrackPlayer.setupPlayer();
-            await TrackPlayer.updateOptions({
-                android: {
-                    appKilledPlaybackBehavior:
-                        AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
-                },
-                capabilities: [
-                    Capability.Play,
-                    Capability.Pause,
-                    Capability.SkipToNext,
-                    Capability.SkipToPrevious,
-                    Capability.SeekTo,
-                ],
-                compactCapabilities: [
-                    Capability.Play,
-                    Capability.Pause,
-                    Capability.SkipToNext,
-                ],
-                progressUpdateEventInterval: 2,
-            });
+    // const setupPlayer = async () => {
+    //     let isSetup = false;
+    //     try {
+    //         await TrackPlayer.getCurrentTrack();
+    //         isSetup = true;
+    //     }
+    //     catch {
+    //         await TrackPlayer.setupPlayer();
+    //         await TrackPlayer.updateOptions({
+    //             android: {
+    //                 appKilledPlaybackBehavior:
+    //                     AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
+    //             },
+    //             capabilities: [
+    //                 Capability.Play,
+    //                 Capability.Pause,
+    //                 Capability.SkipToNext,
+    //                 Capability.SkipToPrevious,
+    //                 Capability.SeekTo,
+    //             ],
+    //             compactCapabilities: [
+    //                 Capability.Play,
+    //                 Capability.Pause,
+    //                 Capability.SkipToNext,
+    //             ],
+    //             progressUpdateEventInterval: 2,
+    //         });
 
-            isSetup = true;
-        }
-        finally {
-            return isSetup;
-        }
-    }
+    //         isSetup = true;
+    //     }
+    //     finally {
+    //         return isSetup;
+    //     }
+    // }
 
 
-    const addTracks = async () => {
-        await TrackPlayer.add([
-            {
-                id: '1',
-                url: require('../../../../assets/Songs/Sample-1.mp3'),
-                title: 'Fluidity',
-                artist: 'tobylane',
-                duration: 60,
-            }
-        ]);
-        await TrackPlayer.setRepeatMode(RepeatMode.Queue);
-    }
+    // const addTracks = async () => {
+    //     await TrackPlayer.add([
+    //         {
+    //             id: '1',
+    //             url: require('../../../../assets/Songs/Sample-1.mp3'),
+    //             title: 'Fluidity',
+    //             artist: 'tobylane',
+    //             duration: 60,
+    //         }
+    //     ]);
+    //     await TrackPlayer.setRepeatMode(RepeatMode.Queue);
+    // }
 
-    useEffect(() => {
-        const setup = async () => {
-            let isSetup = await setupPlayer();
-            const queue = await TrackPlayer.getQueue();
-            if (isSetup && queue.length <= 0) {
-                await addTracks();
-            }
-            setIsPlayerReady(isSetup);
-        }
-        setup();
-    }, []);
+    // useEffect(() => {
+    //     const setup = async () => {
+    //         let isSetup = await setupPlayer();
+    //         const queue = await TrackPlayer.getQueue();
+    //         if (isSetup && queue.length <= 0) {
+    //             await addTracks();
+    //         }
+    //         setIsPlayerReady(isSetup);
+    //     }
+    //     setup();
+    // }, []);
     
 
 
@@ -79,6 +79,42 @@ const Music = () => {
 //             await TrackPlayer.setupPlayer();
 //         }
 // })
+
+useEffect(()=>{
+    setupPlayer()
+},[])
+
+    const setupPlayer = async () => {
+        try {
+            await TrackPlayer.setupPlayer()
+            await TrackPlayer.updateOptions({
+                capabilities: [
+                    Capability.Play,
+                    Capability.Pause,
+                    Capability.SkipToNext,
+                    Capability.SkipToPrevious,
+                    Capability.Stop
+                ],
+                compactCapabilities: [Capability.Play, Capability.Pause]
+            })
+            await TrackPlayer.add(musicListArray)
+        } catch (error) {
+            console.log("error===", error);
+        }
+    }
+
+    const palyPause = async (id) => {
+        // console.log("id",id , typeof id);
+        var index=id-1
+        // console.log("index",index, typeof index);
+        try {
+            await TrackPlayer.skip(index)
+            await TrackPlayer.play()
+        }
+        catch (error) {
+            console.log("error===", error);
+        }
+    }
 
     // const start = async (item) => {
     //     console.log("item===", item);
@@ -95,7 +131,7 @@ const Music = () => {
     //         // Start playing it
     //         await TrackPlayer.play();
     //     } catch (error) {
-    //         console.log("error===", error);
+    //         console.log("error===", error); 
     //     }
     // };
     
@@ -115,7 +151,7 @@ const Music = () => {
                     <Text style={styles.itemTextStyle}>{item.title}</Text>
                 </View>
                 <View style={styles.buttonViewStyle}>
-                    <Text style={styles.itemTextStyle} onPress={() => {TrackPlayer.play()  }}>Add</Text>
+                    <Text style={styles.itemTextStyle} onPress={() => { palyPause(item.id) }}>Add</Text>
                 </View>
             </View>
         )
@@ -123,13 +159,15 @@ const Music = () => {
   return (
     <View style={styles.viewStyle}>
       <Text>musicIndex</Text>
-      { isPlayerReady ? <FlatList
-                data={musicListArray}
-                style={{ flex: 1 }}
-                renderItem={renderItem}
-            /> :
-            <View><Text>{isPlayerReady}</Text></View>
-            }
+          {/* {isPlayerReady ? */}
+              <FlatList
+                  data={musicListArray}
+                  style={{ flex: 1 }}
+                  renderItem={renderItem}
+              />
+              {/* : */}
+         {/* <View><Text>{isPlayerReady}</Text></View> */}
+            {/* } */}
     </View>
   )
 }

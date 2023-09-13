@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet, Dimensions, Image, FlatList } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, Image, FlatList, Pressable } from 'react-native'
 import React,{useEffect,useState} from 'react'
-import { musicListArray } from '../../../utils/globalConstant'
+import { musicListArray, setupPlayer } from '../../../utils/globalConstant'
 import TrackPlayer,{State,Capability,AppKilledPlaybackBehavior,RepeatMode} from 'react-native-track-player'
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
-const Music = () => {
+const Music = (props) => {
     // const [isPlayerReady, setIsPlayerReady] = useState(false);
 
     // const setupPlayer = async () => {
@@ -83,25 +83,25 @@ const Music = () => {
 useEffect(()=>{
     setupPlayer()
 },[])
-
-    const setupPlayer = async () => {
-        try {
-            await TrackPlayer.setupPlayer()
-            await TrackPlayer.updateOptions({
-                capabilities: [
-                    Capability.Play,
-                    Capability.Pause,
-                    Capability.SkipToNext,
-                    Capability.SkipToPrevious,
-                    Capability.Stop
-                ],
-                compactCapabilities: [Capability.Play, Capability.Pause]
-            })
-            await TrackPlayer.add(musicListArray)
-        } catch (error) {
-            console.log("error===", error);
-        }
-    }
+//To setUpPlayer
+    // const setupPlayer = async () => {
+    //     try {
+    //         await TrackPlayer.setupPlayer()
+    //         await TrackPlayer.updateOptions({
+    //             capabilities: [
+    //                 Capability.Play,
+    //                 Capability.Pause,
+    //                 Capability.SkipToNext,
+    //                 Capability.SkipToPrevious,
+    //                 Capability.Stop
+    //             ],
+    //             compactCapabilities: [Capability.Play, Capability.Pause]
+    //         })
+    //         await TrackPlayer.add(musicListArray)
+    //     } catch (error) {
+    //         console.log("error===", error);
+    //     }
+    // }
 
     const palyPause = async (id) => {
         // console.log("id",id , typeof id);
@@ -110,6 +110,11 @@ useEffect(()=>{
         try {
             await TrackPlayer.skip(index)
             await TrackPlayer.play()
+            var PlayingState=await TrackPlayer.getState()
+            console.log("PlayingState===", PlayingState);
+            if (PlayingState == 'connecting') {
+                await TrackPlayer.pause()
+            }
         }
         catch (error) {
             console.log("error===", error);
@@ -142,7 +147,7 @@ useEffect(()=>{
 
     const renderItem = ({ item }) => {
         return (
-            <View style={styles.itemViewStyle}>
+            <Pressable style={styles.itemViewStyle} onPress={() => props.navigation.navigate('MusicHome',{item})}>
                 <Image source={{ uri: item.image }}
                     resizeMode='cover'
                     style={styles.imageStyle} />
@@ -153,7 +158,7 @@ useEffect(()=>{
                 <View style={styles.buttonViewStyle}>
                     <Text style={styles.itemTextStyle} onPress={() => { palyPause(item.id) }}>Add</Text>
                 </View>
-            </View>
+            </Pressable>
         )
     }
   return (

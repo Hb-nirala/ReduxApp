@@ -1,4 +1,5 @@
 import * as yup from 'yup'
+import TrackPlayer,{State,Capability,AppKilledPlaybackBehavior,RepeatMode} from 'react-native-track-player'
 
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
@@ -617,4 +618,23 @@ export const musicListArray = [
         duration: 15,
     },
 ]
+
+export const setupPlayer = async () => {
+    try {
+        await TrackPlayer.setupPlayer()
+        await TrackPlayer.updateOptions({
+            capabilities: [
+                Capability.Play,
+                Capability.Pause,
+                Capability.SkipToNext,
+                Capability.SkipToPrevious,
+                Capability.Stop
+            ],
+            compactCapabilities: [Capability.Play, Capability.Pause]
+        })
+        await TrackPlayer.add(musicListArray)
+    } catch (error) {
+        console.log("error===", error);
+    }
+}
 

@@ -103,23 +103,23 @@ useEffect(()=>{
     //     }
     // }
 
-    const palyPause = async (id) => {
-        // console.log("id",id , typeof id);
-        var index=id-1
-        // console.log("index",index, typeof index);
-        try {
-            await TrackPlayer.skip(index)
-            await TrackPlayer.play()
-            var PlayingState=await TrackPlayer.getState()
-            console.log("PlayingState===", PlayingState);
-            if (PlayingState == 'connecting') {
-                await TrackPlayer.pause()
-            }
-        }
-        catch (error) {
-            console.log("error===", error);
-        }
-    }
+    // const palyPause = async (id) => {
+    //     // console.log("id",id , typeof id);
+    //     var index=id-1
+    //     // console.log("index",index, typeof index);
+    //     try {
+    //         await TrackPlayer.skip(index)
+    //         await TrackPlayer.play()
+    //         var PlayingState=await TrackPlayer.getState()
+    //         console.log("PlayingState===", PlayingState);
+    //         if (PlayingState == 'connecting') {
+    //             await TrackPlayer.pause()
+    //         }
+    //     }
+    //     catch (error) {
+    //         console.log("error===", error);
+    //     }
+    // }
 
     // const start = async (item) => {
     //     console.log("item===", item);

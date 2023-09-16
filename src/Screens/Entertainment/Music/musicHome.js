@@ -1,26 +1,21 @@
-import { View, Text, StyleSheet, Image, Dimensions, FlatList } from 'react-native'
+import { View, Text, StyleSheet, Image, Dimensions, FlatList, TouchableOpacity } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import Icon from 'react-native-vector-icons/AntDesign'
-import TrackPlayer, { State } from 'react-native-track-player'
+import TrackPlayer, { State, useProgress } from 'react-native-track-player'
 import { musicListArray } from '../../../utils/globalConstant'
-import Carousel from 'react-native-snap-carousel'
+import Slider from '@react-native-community/slider'
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 
 const sliderWidth = deviceWidth
 const itemWidth = deviceWidth
+
 const MusicHome = (props) => {
     const item = props?.route?.params?.item
     const [isPlay, setIsPlay] = useState(false)
-    const [index, setIndex] = useState()
     const [currentIndex, setCurrentIndex] = useState(item?.id - 1)
     const flatListRef = useRef()
-
-    // const viewConfigRef = useRef({ minimumViewTime: 100, viewAreaCoveragePercentThreshold: 50 })
-    // const onViewableMusicItemsChangedRef = useRef(({ changed }) => {
-    //     console.log("changed===",changed);
-    //     setCurrentIndex(changed[0].index)
-    //   })
+    const { position, duration } = useProgress(0);
 
     useEffect(() => {
         palyPause(currentIndex)
@@ -28,12 +23,13 @@ const MusicHome = (props) => {
 
     useEffect(() => {
         setTimeout(() => {
-            flatListRef?.current?.scrollToIndex({
+            flatListRef?.current?.scrollToIndex({ 
                 animated: true,
                 index: currentIndex
             })
         }, 500)
-    }, [])
+    }, [currentIndex])
+
 
     const palyPause = async (currentIndex) => {
         // console.log("id",id , typeof id);
@@ -58,47 +54,32 @@ const MusicHome = (props) => {
     }
 
     const nextClick = async() => {
-        // flatListRef?.current?.snapToNext()
-        // var index = item?.id - 1
-        // console.log("index==1", index);
-        // index = index + 1
-        // console.log("index==2", index);
-        // if (index < musicListArray.length) {
-            console.log("index==3", index);
-            // flatListRef?.current?.scrollToIndex({ animated: true, index: index })
             let currentTrack=await TrackPlayer.getCurrentTrack()
-            console.log("currentTrack==",currentTrack);
+            flatListRef?.current?.scrollToIndex({
+                animated: true,
+                index: currentTrack
+            })
             await TrackPlayer.skipToNext()
-        // }
-        // else {
-            // console.log("index==4", index);
-            console.log("index is greter than array Length");
-        // } 
+            // console.log("currentTrack==",currentTrack);
     }
 
-    const previousClick = async() => {
-        // flatListRef?.current?.snapToPrev()
-        // var index = item?.id - 1
-        // console.log("index==1", index);
-        // index = index - 1
-        // console.log("index==2", index);
-        // if (index < musicListArray.length) {
-            console.log("index==3", index);
-            // setCurrentIndex(index)
-            // flatListRef?.current?.scrollToIndex({ animated: true, index: index })
-            let currentTrack=await TrackPlayer.getCurrentTrack()
-            console.log("currentTrack==",currentTrack);
-            setCurrentIndex(currentTrack)
-            await TrackPlayer.skipToPrevious()
-        // }
-        // else {
-            // console.log("index is greter than array Length");
-            // await TrackPlayer.skipToPrevious()
-        // }
+    const previousClick = async () => {
+        let currentTrack = await TrackPlayer.getCurrentTrack()
+        flatListRef?.current?.scrollToIndex({
+            animated: true,
+            index: currentTrack
+        })
+        await TrackPlayer.skipToPrevious()
+        // console.log("currentTrack==",currentTrack);
+    }
+
+    const format = (seconds) => {
+        let mins = (parseInt(seconds / 60)).toString().padStart(2, '0');
+        let secs = (Math.trunc(seconds) % 60).toString().padStart(2, '0');
+        return `${mins}:${secs}`;
     }
 
     const musicItemRenderItem = ({ item }) => {
-        // console.log("item==",item);
         return (
             <View style={styles.itemViewRenderStyle}>
                 <Image source={{ uri: item.image }}
@@ -106,7 +87,7 @@ const MusicHome = (props) => {
                     style={styles.imageStyle} />
                 <View style={styles.itemInfoStyle}>
                     <Text style={styles.itemTextStyle}>{item.name}</Text>
-                    <Text style={styles.itemTextStyle}>{item.title}</Text>
+                    <Text style={styles.itemTitleStyle}>{item.title}</Text>
                 </View>
             </View>
         )
@@ -114,15 +95,16 @@ const MusicHome = (props) => {
 
     return (
         <View style={styles.viewStyle}>
-            <Text>musicHome</Text>
+            <Icon name='arrowleft' color={'white'} style={styles.iconStyle} size={25} onPress={()=>{props.navigation.goBack()}}/>
             <View style={styles.flatListStyle}>
                 <FlatList
+                    showsHorizontalScrollIndicator={false}
                     horizontal
                     ref={flatListRef}
                     data={musicListArray}
                     renderItem={musicItemRenderItem}
-                    onScroll={async(e)=>{
-                        const x=e.nativeEvent.contentOffset.x/deviceWidth;
+                    onScroll={async (e) => {
+                        const x = e.nativeEvent.contentOffset.x / deviceWidth;
                         setCurrentIndex(parseInt(x.toFixed(0)))
                     }}
                     // sliderWidth={sliderWidth}
@@ -138,23 +120,32 @@ const MusicHome = (props) => {
                 // onViewableItemsChanged={onViewableMusicItemsChangedRef?.current}
                 />
             </View>
-
-            {/* <Image source={{ uri: item.image }}
-                resizeMode='cover'
-                style={styles.imageStyle} />
-            <View style={styles.itemInfoStyle}>
-                <Text style={styles.itemTextStyle}>{item.name}</Text>
-                <Text style={styles.itemTextStyle}>{item.title}</Text>
-            </View> */}
-
+            <View style={styles.controlViewStyle}>
+                <Text style={styles.trackProgress}>
+                    {format(position)}
+                </Text>
+                <Text style={styles.trackProgress}>
+                    {format(duration)}
+                </Text>
+            </View>
+            <Slider
+                style={styles.sliderStyle}
+                minimumValue={0}
+                maximumValue={duration}
+                minimumTrackTintColor="rgb(197,5,4)"
+                maximumTrackTintColor="white"
+                thumbTintColor='rgb(197,5,4)'
+                value={position}
+                onValueChange={async (value) => await TrackPlayer.seekTo(value)}
+            />
             <View style={styles.musicControlStyle}>
-                <Icon name='banckward' size={40} onPress={() => { previousClick() }} color={'rgb(0,0,50)'} />
+                <TouchableOpacity style={styles.circleStyle}><Icon name='banckward' size={40} onPress={() => { previousClick() }} color={'white'} /></TouchableOpacity>
                 {isPlay ?
-                    <Icon name='pausecircleo' size={40} onPress={() => { palyPause(currentIndex) }} color={'rgb(0,0,50)'} /> //playcircleo
+                    <Icon name='pausecircleo' size={40} onPress={() => { palyPause(currentIndex) }} color={'white'} />//playcircleo
                     :
-                    <Icon name='playcircleo' size={40} onPress={() => { palyPause(currentIndex) }} color={'rgb(0,0,50)'} />
+                    <Icon name='playcircleo' size={40} onPress={() => { palyPause(currentIndex) }} color={'white'} />
                 }
-                <Icon name='forward' size={40} onPress={() => { nextClick() }} color={'rgb(0,0,50)'} />
+                <TouchableOpacity><Icon name='forward' size={40} onPress={() => { nextClick() }} color={'white'} /></TouchableOpacity>
             </View>
         </View>
     )
@@ -162,13 +153,13 @@ const MusicHome = (props) => {
 const styles = StyleSheet.create({
     viewStyle: {
         flex: 1,
-        backgroundColor: 'rgb(225,245,230)',
+        backgroundColor: 'rgb(0,0,50)',
         alignItems: 'center',
     },
     imageStyle: {
         marginVertical: 20,
-        width: deviceWidth / 2,
-        height: deviceWidth / 2,
+        width: deviceWidth *0.7,
+        height: deviceWidth *0.7,
         borderRadius: 10,
     },
     itemInfoStyle: {
@@ -178,7 +169,7 @@ const styles = StyleSheet.create({
     },
     itemTextStyle: {
         fontSize: 25,
-        color: 'black'
+        color: 'white'
     },
     musicControlStyle: {
         // top: deviceHeight * 0.3,
@@ -186,15 +177,50 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginHorizontal: 30,
+        marginVertical:10,
     },
     itemViewRenderStyle: {
         width: deviceWidth,
         alignItems: 'center',
-        // backgroundColor:'red'
     },
     flatListStyle: {
-        height: deviceHeight * 0.7,
-        // backgroundColor:'yellow'
+        marginTop:deviceHeight*0.07,
+        height: deviceHeight * 0.65,
+        // width:deviceWidth*0.8,
+        // backgroundColor:'red'
+    },
+    circleStyle: {
+        // backgroundColor:'transparent',
+        // padding:20,
+        // borderRadius:20,
+        // borderStyle:'solid',
+        // borderColor:'red',
+        // borderWidth:2,
+    },
+    controlViewStyle:{
+        width:deviceWidth-50,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        // backgroundColor:'red',
+        marginHorizontal:25,
+    },
+    sliderStyle:{
+        width:deviceWidth-20,
+        marginHorizontal:10,
+    },
+    trackProgress:{
+        color:'white'
+    },
+    iconStyle:{
+        position:'absolute',
+        top:20,
+        left:20,
+    },
+    itemTitleStyle: {
+        fontSize: 15,
+        color: 'white',
+        fontStyle: 'italic',
+        fontWeight: '300'
     }
 })
 export default MusicHome

@@ -610,7 +610,7 @@ export const musicListArray = [
     },
     {
         id: '2',
-        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmPV78qAaxSknKZmaVayk3FhrfIKGZVogIaK1LRTYVdLjlKY0lV0dnitk&s',
+        image:'https://gumlet.assettype.com/pratidintime%2F2022-12%2Ffd118754-49d5-408e-9da4-8aa03b064387%2FZUBEEN_.jpg?auto=format%2Ccompress&fit=max&w=1200',
         name: 'Sample-2',
         url: require('../../assets/Songs/Sample-2.mp3'),
         title: 'Fluidity',
@@ -628,7 +628,7 @@ export const musicListArray = [
     },
     {
         id: '4',
-        image:'https://m.media-amazon.com/images/M/MV5BMTUzODMyNzk4NV5BMl5BanBnXkFtZTgwNTk1NTYyNTM@._V1_.jpg',
+        image:'https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8=',
         name: 'Chak De India',
         url: require('../../assets/Songs/sample-3.mp3'),
         title: 'Shah Rukh Khan',
@@ -637,7 +637,7 @@ export const musicListArray = [
     },
     {
         id: '5',
-        image:'https://m.media-amazon.com/images/M/MV5BMTUzODMyNzk4NV5BMl5BanBnXkFtZTgwNTk1NTYyNTM@._V1_.jpg',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWJm7YkuR53TP9u5W6a9Wt_pWbC8JtQPDRcQ&usqp=CAU',
         name: 'Chak De India',
         url: require('../../assets/Songs/sample-4.mp3'),
         title: 'Shah Rukh Khan',
@@ -646,7 +646,7 @@ export const musicListArray = [
     },
     {
         id: '6',
-        image:'https://m.media-amazon.com/images/M/MV5BMTUzODMyNzk4NV5BMl5BanBnXkFtZTgwNTk1NTYyNTM@._V1_.jpg',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsBtC4-m8DnE4ZJkd-xdMZsJ3RMxv1RHLUXg&usqp=CAU',
         name: 'Chak De India',
         url: require('../../assets/Songs/sample-5.mp3'),
         title: 'Shah Rukh Khan',
@@ -655,7 +655,7 @@ export const musicListArray = [
     },
     {
         id: '7',
-        image:'https://m.media-amazon.com/images/M/MV5BMTUzODMyNzk4NV5BMl5BanBnXkFtZTgwNTk1NTYyNTM@._V1_.jpg',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKXYSs2F_0O04sLv8AjIH43Owr2rEIfkFEOA&usqp=CAU',
         name: 'Chak De India',
         url: require('../../assets/Songs/songs_1.mp3'),
         title: 'Shah Rukh Khan',
@@ -664,9 +664,99 @@ export const musicListArray = [
     },
     {
         id: '8',
-        image:'https://m.media-amazon.com/images/M/MV5BMTUzODMyNzk4NV5BMl5BanBnXkFtZTgwNTk1NTYyNTM@._V1_.jpg',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBQ6a5i5Wwu8XWGzfBUftNh3-w_OEq_r56nkzBUK2hFxG_2zi1lHi0lwLiZVUEfmvQC2o&usqp=CAU',
         name: 'Chak De India',
         url: require('../../assets/Songs/songs_2.mp3'),
+        title: 'Shah Rukh Khan',
+        artist: 'Shah Rukh Khan',
+        duration: 3,
+    },
+    {
+        id: '9',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZSY7oxOjgjTnAuBpHfd796_QWJ6JgiF5TtegnUv0zq6gMq1UICDeX3qn30NX7L7m8Mmc&usqp=CAU',
+        name: 'Barsaat ki Dhun',
+        url: require('../../assets/Songs/Barsaat_Ki_Dhun.mp3'),
+        title: 'Jubin Nautiyal',
+        artist: 'Jubin Nautiyal',
+        duration: 3,
+    },
+    {
+        id: '10',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS3hzcNHaErrbAqL_GoqZ8C7pz7jczQH4xZXA5kXZ12CAHDQLsvRx71uvOaow2xzBZ78U&usqp=CAU',
+        name: 'Chal chal ve tu Bandeya',
+        url: require('../../assets/Songs/Chal_chal_ve_tu_Bandeya.mp3'),
+        title: 'Arijit Singh',
+        artist: 'Arijit Singh',
+        duration: 3,
+    },
+    {
+        id: '11',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBQ6a5i5Wwu8XWGzfBUftNh3-w_OEq_r56nkzBUK2hFxG_2zi1lHi0lwLiZVUEfmvQC2o&usqp=CAU',
+        name: 'Chak De India',
+        url: require('../../assets/Songs/Ijazat.mp3'),
+        title: 'Shah Rukh Khan',
+        artist: 'Shah Rukh Khan',
+        duration: 3,
+    },
+    {
+        id: '12',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBQ6a5i5Wwu8XWGzfBUftNh3-w_OEq_r56nkzBUK2hFxG_2zi1lHi0lwLiZVUEfmvQC2o&usqp=CAU',
+        name: 'Chak De India',
+        url: require('../../assets/Songs/Jo_Bheji_Thi_Duaa.mp3'),
+        title: 'Shah Rukh Khan',
+        artist: 'Shah Rukh Khan',
+        duration: 3,
+    },
+    {
+        id: '13',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBQ6a5i5Wwu8XWGzfBUftNh3-w_OEq_r56nkzBUK2hFxG_2zi1lHi0lwLiZVUEfmvQC2o&usqp=CAU',
+        name: 'Chak De India',
+        url: require('../../assets/Songs/Mast_magan.mp3'),
+        title: 'Shah Rukh Khan',
+        artist: 'Shah Rukh Khan',
+        duration: 3,
+    },
+    {
+        id: '14',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBQ6a5i5Wwu8XWGzfBUftNh3-w_OEq_r56nkzBUK2hFxG_2zi1lHi0lwLiZVUEfmvQC2o&usqp=CAU',
+        name: 'Chak De India',
+        url: require('../../assets/Songs/Meri_Zindagi_Hai_Tu.mp3'),
+        title: 'Shah Rukh Khan',
+        artist: 'Shah Rukh Khan',
+        duration: 3,
+    },
+    {
+        id: '15',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBQ6a5i5Wwu8XWGzfBUftNh3-w_OEq_r56nkzBUK2hFxG_2zi1lHi0lwLiZVUEfmvQC2o&usqp=CAU',
+        name: 'Chak De India',
+        url: require('../../assets/Songs/Meri_Zindagi_Hai_Tu.mp3'),
+        title: 'Shah Rukh Khan',
+        artist: 'Shah Rukh Khan',
+        duration: 3,
+    },
+    {
+        id: '16',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBQ6a5i5Wwu8XWGzfBUftNh3-w_OEq_r56nkzBUK2hFxG_2zi1lHi0lwLiZVUEfmvQC2o&usqp=CAU',
+        name: 'Chak De India',
+        url: require('../../assets/Songs/Meri_Zindagi_Hai_Tu.mp3'),
+        title: 'Shah Rukh Khan',
+        artist: 'Shah Rukh Khan',
+        duration: 3,
+    },
+    {
+        id: '17',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBQ6a5i5Wwu8XWGzfBUftNh3-w_OEq_r56nkzBUK2hFxG_2zi1lHi0lwLiZVUEfmvQC2o&usqp=CAU',
+        name: 'Chak De India',
+        url: require('../../assets/Songs/Muskurane_ki_wajah_tum_ho.mp3'),
+        title: 'Shah Rukh Khan',
+        artist: 'Shah Rukh Khan',
+        duration: 3,
+    },
+    {
+        id: '18',
+        image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBQ6a5i5Wwu8XWGzfBUftNh3-w_OEq_r56nkzBUK2hFxG_2zi1lHi0lwLiZVUEfmvQC2o&usqp=CAU',
+        name: 'Chak De India',
+        url: require('../../assets/Songs/Saanson_Ko_jeene_ka_sahara_mil_gaya.mp3'),
         title: 'Shah Rukh Khan',
         artist: 'Shah Rukh Khan',
         duration: 3,
@@ -677,6 +767,10 @@ export const setupPlayer = async () => {
     try {
         await TrackPlayer.setupPlayer()
         await TrackPlayer.updateOptions({
+            android: {
+                appKilledPlaybackBehavior:
+                    AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
+            },
             capabilities: [
                 Capability.Play,
                 Capability.Pause,
@@ -691,4 +785,3 @@ export const setupPlayer = async () => {
         console.log("error===", error);
     }
 }
-

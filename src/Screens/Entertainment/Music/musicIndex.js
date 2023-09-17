@@ -90,8 +90,8 @@ useEffect(()=>{
                     resizeMode='cover'
                     style={styles.imageStyle} />
                 <View style={styles.itemInfoStyle}>
-                    <Text style={styles.itemTextStyle}>{item.name}</Text>
-                    <Text style={styles.itemTitleStyle}>{item.title}</Text>
+                    <Text style={styles.itemTextStyle} numberOfLines={1}>{item.name}</Text>
+                    <Text style={styles.itemTitleStyle} numberOfLines={1}>{item.title}</Text>
                 </View>
                 <View style={styles.buttonViewStyle}>
                     {/* <Text style={styles.itemTextStyle} onPress={() => { palyPause(item.id) }}>Add</Text> */}

@@ -21,14 +21,14 @@ const MusicHome = (props) => {
         palyPause(currentIndex)
     }, [currentIndex])
 
-    useEffect(() => {
-        setTimeout(() => {
-            flatListRef?.current?.scrollToIndex({ 
-                animated: true,
-                index: currentIndex
-            })
-        }, 500)
-    }, [currentIndex])
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         flatListRef?.current?.scrollToIndex({ 
+    //             animated: true,
+    //             index: currentIndex
+    //         })
+    //     }, 500)
+    // }, [currentIndex])
 
 
     const palyPause = async (currentIndex) => {
@@ -38,11 +38,16 @@ const MusicHome = (props) => {
         try {
             // await TrackPlayer.skip(index)
             // await TrackPlayer.play()
+            // let currentTrack = await TrackPlayer.getCurrentTrack()
+            // console.log("currentTrack===",currentTrack);
             if (await TrackPlayer.getState() == State.Playing) {
+                // console.log("pause====",State.Playing);
                 setIsPlay(false)
                 await TrackPlayer.pause()
             }
             else {
+                // console.log("currentIndex===",currentIndex);
+                //Play particular song that selected from playlist
                 await TrackPlayer.skip(currentIndex)
                 await TrackPlayer.play()
                 setIsPlay(true)
@@ -53,17 +58,18 @@ const MusicHome = (props) => {
         }
     }
 
-    const nextClick = async() => {
-            let currentTrack=await TrackPlayer.getCurrentTrack()
+    const nextClick = async(currentIndex) => {
+            // let currentTrack=await TrackPlayer.getCurrentTrack()
+            // console.log("currentTrack====2",currentTrack);
             flatListRef?.current?.scrollToIndex({
                 animated: true,
-                index: currentTrack
+                index: currentIndex
             })
             await TrackPlayer.skipToNext()
             // console.log("currentTrack==",currentTrack);
     }
 
-    const previousClick = async () => {
+    const previousClick = async (currentIndex) => {
         let currentTrack = await TrackPlayer.getCurrentTrack()
         flatListRef?.current?.scrollToIndex({
             animated: true,
@@ -139,13 +145,13 @@ const MusicHome = (props) => {
                 onValueChange={async (value) => await TrackPlayer.seekTo(value)}
             />
             <View style={styles.musicControlStyle}>
-                <TouchableOpacity style={styles.circleStyle}><Icon name='banckward' size={40} onPress={() => { previousClick() }} color={'white'} /></TouchableOpacity>
+                <TouchableOpacity style={styles.circleStyle}><Icon name='banckward' size={40} onPress={() => { previousClick(currentIndex-1) }} color={'white'} /></TouchableOpacity>
                 {isPlay ?
                     <Icon name='pausecircleo' size={40} onPress={() => { palyPause(currentIndex) }} color={'white'} />//playcircleo
                     :
                     <Icon name='playcircleo' size={40} onPress={() => { palyPause(currentIndex) }} color={'white'} />
                 }
-                <TouchableOpacity><Icon name='forward' size={40} onPress={() => { nextClick() }} color={'white'} /></TouchableOpacity>
+                <TouchableOpacity><Icon name='forward' size={40} onPress={() => { nextClick(currentIndex+1) }} color={'white'} /></TouchableOpacity>
             </View>
         </View>
     )
@@ -163,13 +169,14 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     itemInfoStyle: {
-        width: deviceWidth / 2,
+        width: deviceWidth *0.8,
         justifyContent: 'center',
         alignItems: 'center',
     },
     itemTextStyle: {
         fontSize: 25,
-        color: 'white'
+        color: 'white',
+        textAlign:'center'
     },
     musicControlStyle: {
         // top: deviceHeight * 0.3,
@@ -177,7 +184,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginHorizontal: 30,
-        marginVertical:10,
+        marginBottom:15,
     },
     itemViewRenderStyle: {
         width: deviceWidth,

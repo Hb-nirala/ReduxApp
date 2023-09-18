@@ -1,6 +1,7 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
+import Loader from '../components/Loader';
 
 const Splash = (props) => {
 
@@ -20,14 +21,15 @@ const Splash = (props) => {
 
     return (
         <View style={styles.containerStyle}>
-            <View style={styles.imageContainerStyle}>
+            {/* <View style={styles.imageContainerStyle}>
                 <Image
                     style={styles.imageStyle}
                     resizeMode='cover'
                     source={require('../../assets/Images/Splash_Image.png')}
                 />
                 <Text style={styles.textStyle}>Redux App</Text>
-            </View>
+            </View> */}
+            <Loader/>
         </View>
     )
 }

@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Dimensions, TextInput, Button, Alert, BackHandler } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAuthUserData, } from '../Redux/loginReducer'
 import { Formik } from 'formik'
@@ -9,6 +9,7 @@ const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 
 const Login = (props) => {
+    const [showLoader,setShowLoader]=useState(false)
 
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', backButtonHandler)
@@ -73,6 +74,8 @@ const Login = (props) => {
                 }
             </Formik>
             <Text style={styles.signUpTextStyle} onPress={() => { props.navigation.navigate('Auth') }}>{'new user SignUp'}</Text>
+            <Loader
+                showLoader={showLoader} />
         </View>
     )
 }

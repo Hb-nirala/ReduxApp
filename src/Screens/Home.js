@@ -4,14 +4,22 @@ import { useDispatch, useSelector } from 'react-redux'
 import { onDeleteData, } from '../Redux/productReducer'
 import { onUserLogout } from '../Redux/loginReducer'
 import { setEditItem } from '../Redux/editProductItemReducer'
+import Loader from '../components/Loader'
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 
-const Home = (props) => {
-
+const Home = (props) => { 
+    const [showLoader,setShowLoader]=useState(false) 
     const authorizedUserData = useSelector((state) => state.Login.value.authUserData)
     const productReducerData = useSelector((state) => state?.Product?.value?.productDataArray)
+
+    useEffect(() => {
+        setShowLoader(true)
+        setTimeout(() => {
+            setShowLoader(false) 
+        }, 50000);
+    }, [])
 
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', backButtonHandler)
@@ -106,6 +114,7 @@ const Home = (props) => {
                 style={{ flex: 1 }}
                 renderItem={renderItem}
             />
+            <Loader showLoader={showLoader}/>
         </View>
     )
 }

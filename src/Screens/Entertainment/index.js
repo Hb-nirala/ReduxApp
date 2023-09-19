@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Linking, TouchableOpacity, Dimensions, Image, A
 import React, { useState, useCallback, useEffect } from 'react'
 import Icon from 'react-native-vector-icons/AntDesign';
 import ReactButton from '../../components/Buttons/ReactButton';
+import HeaderBoldText from '../../components/Text/HeaderBoldText';
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
@@ -20,6 +21,7 @@ const Entertainment = (props) => {
 
     return (
         <View style={styles.containerStyle}>
+            <HeaderBoldText headerTitle={"Enjoy"} />
             <TouchableOpacity style={styles.buttonStyle}
                 onPress={() => {
                     Linking.openURL('https://www.youtube.com');

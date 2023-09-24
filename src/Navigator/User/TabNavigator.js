@@ -8,6 +8,7 @@ import EntertainmentNavigator from './EntertainmentNavigator';
 import Entertainment from '../../Screens/Entertainment';
 import Icon from 'react-native-vector-icons/Entypo';
 import { Text, StyleSheet } from 'react-native';
+import HomeNavigator from './HomeNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -44,7 +45,7 @@ const UserNavigator = () => {
         <Tab.Navigator screenOptions={{
             headerShown: false
         }}>
-            <Tab.Screen name="Home" component={Home}
+            <Tab.Screen name="HomeNavigator" component={HomeNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => {
                         if (focused) {

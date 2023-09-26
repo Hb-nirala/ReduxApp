@@ -1,9 +1,8 @@
 import { View, Text, StyleSheet, Linking, TouchableOpacity, Dimensions, Image, Alert, Button, BackHandler, Platform, ImageBackground } from 'react-native'
 import React, { useState, useCallback, useEffect } from 'react'
 import Icon from 'react-native-vector-icons/AntDesign';
-import ReactButton from '../../components/Buttons/ReactButton';
 import HeaderBoldText from '../../components/Text/HeaderBoldText';
-import { EnjoyTabImages, music } from '../../utils/appStrings';
+import { Enjoy, EnjoyTabImages, music } from '../../utils/appStrings';
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
@@ -23,11 +22,11 @@ const Entertainment = (props) => {
     return (
         <View style={styles.containerStyle}>
             <HeaderBoldText headerTitle={"Enjoy"} />
-            <TouchableOpacity style={styles.buttonStyle}
+            <TouchableOpacity style={styles.youtubeButtonStyle}
                 onPress={() => {
                     Linking.openURL('https://www.youtube.com');
-                }}
-            >
+                }}>
+                <Text style={styles.youtubeTitleStyle}>{Enjoy.you_tube}</Text>
                 <Icon name={'youtube'} size={70} color={'red'} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.buttonStyle}
@@ -35,21 +34,20 @@ const Entertainment = (props) => {
                     props.navigation.navigate('YoutubeVideos')
                 }}
             >
-                <Text>Youtube</Text>
+                <Image style={styles.youtubeBannerImage}
+                    resizeMode='cover'
+                    source={EnjoyTabImages.youtube_videos_bannerimage} />
+                <Text style={styles.descriptionTextStyle}>{Enjoy.youtube_videos_description}</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { props.navigation.navigate('Music') }}>
                 <Image
                     style={styles.imageStyle}
                     source={{ uri: EnjoyTabImages.music_banner }}
                     resizeMode='cover' />
-                    <View style={styles.viewStyle}>
+                <View style={styles.viewStyle}>
                     <Text style={styles.textStyle}>{music.music}</Text>
-                    </View>
+                </View>
             </TouchableOpacity>
-            {/* <ReactButton
-                onPress={() => { props.navigation.navigate('Music') }}
-                buttonTitle={'Music Enjoy'}
-            /> */}
         </View>
     )
 }
@@ -61,10 +59,16 @@ const styles = StyleSheet.create({
     },
     buttonStyle: {
         alignItems: 'center',
-        width: deviceWidth / 2,
+        width: deviceWidth-20,
         // backgroundColor: 'red',
-        padding: 10,
-        marginTop: 30
+        // padding: 10,
+        marginVertical: 10,
+        backgroundColor:'rgba(99, 141, 145,0.5)',
+        borderRadius:20,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        paddingHorizontal:10,
+        paddingVertical:10,
     },
     imageStyle: {
         width: deviceWidth-20,
@@ -85,6 +89,39 @@ const styles = StyleSheet.create({
         fontSize:30,
         fontStyle:'normal',
         color:'white',
+    },
+    youtubeBannerImage:{
+        width:100,
+        height:100
+    },
+    descriptionTextStyle:{
+        color:'white',
+        fontSize:20,
+        fontStyle:'normal',
+        fontWeight:'600',
+        textAlign:'center',
+    },
+    youtubeTitleStyle:{
+        fontSize:15,
+        fontStyle:'normal',
+        fontWeight:'500',
+        color:'black',
+        textAlign:'left',
+        marginLeft:deviceWidth*0.1
+        // width:deviceWidth*0.8
+    },
+    youtubeButtonStyle:{
+        alignItems: 'center',
+        width: deviceWidth-20,
+        // backgroundColor: 'red',
+        // padding: 10,
+        marginVertical: 10,
+        backgroundColor:'rgba(99, 141, 145,0.5)',
+        borderRadius:20,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        paddingHorizontal:40,
+        paddingVertical:30,
     }
 })
 export default Entertainment

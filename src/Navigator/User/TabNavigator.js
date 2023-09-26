@@ -1,14 +1,15 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../../Screens/Home';
-import ApiResponse from '../../Screens/ApiResponse';
-import Cart from '../../Screens/Cart';
+import Home from '../../Screens/Home/Home';
+import ApiResponse from '../../Screens/ApiCall/ApiResponse';
+import Cart from '../../Screens/Cart/Cart';
 import TwilioChatNavigator from './TwilioChatNavigator';
 import EntertainmentNavigator from './EntertainmentNavigator';
 import Entertainment from '../../Screens/Entertainment';
 import Icon from 'react-native-vector-icons/Entypo';
 import { Text, StyleSheet } from 'react-native';
 import HomeNavigator from './HomeNavigator';
+import ApiNavigator from './ApiNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -70,7 +71,7 @@ const UserNavigator = () => {
                     },
                     tabBarShowLabel: false
                 }} />
-            <Tab.Screen name="ApiResponse" component={ApiResponse}
+            <Tab.Screen name="ApiNavigator" component={ApiNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => {
                         if (focused) {

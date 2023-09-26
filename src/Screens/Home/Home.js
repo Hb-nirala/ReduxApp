@@ -1,13 +1,13 @@
 import { View, Text, StyleSheet, Dimensions, Button, FlatList, Alert, BackHandler } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { onDeleteData, } from '../Redux/productReducer'
-import { onUserLogout } from '../Redux/loginReducer'
-import { setEditItem } from '../Redux/editProductItemReducer'
-import Loader from '../components/Loader'
+import { onDeleteData, } from '../../Redux/productReducer'
+import { onUserLogout } from '../../Redux/loginReducer'
+import { setEditItem } from '../../Redux/editProductItemReducer'
+import Loader from '../../components/Loader'
 
 const deviceWidth = Dimensions.get('screen').width
-const deviceHeight = Dimensions.get('screen').height
+const deviceHeight = Dimensions.get('screen').height  
 
 const Home = (props) => { 
     const [showLoader,setShowLoader]=useState(false) 
@@ -17,7 +17,7 @@ const Home = (props) => {
     useEffect(() => {
         setShowLoader(true)
         setTimeout(() => {
-            setShowLoader(false) 
+            setShowLoader(false)      
         }, 50000);
     }, [])
 
@@ -92,7 +92,7 @@ const Home = (props) => {
             </View>
             <View style={styles.viewButtonStyle}>
                 <View style={styles.button}>
-                    <Button title={'Api Response'} onPress={() => { props.navigation.navigate('ApiResponse') }} color={'rgba(0,0,50,0.9)'} />
+                    <Button title={'Api Response'} onPress={() => { props.navigation.navigate('ApiNavigator',{screen:'ApiResponse'}) }} color={'rgba(0,0,50,0.9)'} />
                 </View>
                 <View style={styles.button}>
                     <Button title={'Add'} onPress={() => { props.navigation.navigate('AddProduct') }} color={'rgba(0,0,50,0.9)'} />
@@ -100,10 +100,10 @@ const Home = (props) => {
             </View>
             <View style={styles.viewButtonStyle}>
                 <View style={styles.button}>
-                    <Button title={'Go to Api Call'} onPress={() => { props.navigation.navigate('ApiCall') }} color={'rgba(0,0,50,0.9)'} />
+                    <Button title={'Go to Api Call'} onPress={() => { props.navigation.navigate('ApiNavigator', { screen: 'ApiCall' }) }} color={'rgba(0,0,50,0.9)'} />
                 </View>
                 <View style={styles.button}>
-                    <Button title={'Go to ChatApp'} onPress={() => { props.navigation.navigate('TwilioChatNavigator', { screen: 'TwilioChatWelcomeScreen' }) }} color={'rgba(0,0,50,0.9)'} />
+                    <Button title={'Go to ChatApp'} onPress={() => { props.navigation.navigate('Chats', { screen: 'TwilioChatWelcomeScreen' }) }} color={'rgba(0,0,50,0.9)'} />
                 </View>
             </View>
             <View style={styles.button}>

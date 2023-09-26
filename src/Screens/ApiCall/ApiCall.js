@@ -1,9 +1,11 @@
-import { View, Text, StyleSheet, Dimensions, Button } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, Button, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchNews } from '../../Redux/thunkActions'
 import { fetchData, getApiCall } from '../../Redux/thunkReducer'
 import Icon from 'react-native-vector-icons/AntDesign'
+import HeaderBoldText from '../../components/Text/HeaderBoldText'
+import { Api, ApiTabImages } from '../../utils/appStrings'
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
@@ -11,15 +13,23 @@ const deviceHeight = Dimensions.get('screen').height
 const ApiCall = (props) => {
     return (
         <View style={styles.viewStyle}>
-            <View style={styles.headerStyle}>
-                <Icon name='arrowleft' size={25} onPress={() => { props.navigation.goBack() }} color='black' style={{}} />
-                <Text style={styles.salutationStyle}>API Integration</Text>
-            </View>
-            <View style={styles.button}>
-                <Button title={'call get API'} onPress={() => { props.navigation.navigate('ThunkResponseData') }} color={'rgba(0,0,50,0.9)'} />
-            </View>
-            <View style={styles.postButton}>
-                <Button title={'Go to call post API'} onPress={() => { props.navigation.navigate('ThunkPostData') }} color={'rgba(0,0,50,0.9)'} />
+                <HeaderBoldText headerTitle={"API"} />
+            <View style={styles.containerStyle}>
+                <Text style={styles.titleStyle}>{Api.get_api_title}</Text>
+                <Text style={styles.descriptionTextStyle}>{Api.get_api_description}</Text>
+                <TouchableOpacity style={styles.button} onPress={() => { props.navigation.navigate('ThunkResponseData') }}>
+                    <Text>{Api.get_api_buttonText}</Text>
+                    <Image
+                        style={styles.logoImageStyle}
+                        source={{ uri: ApiTabImages.get_api_image }}
+                        resizeMode='cover' />
+                </TouchableOpacity>
+                <View style={styles.postButton}>
+                    <Button title={'Go to call post API'} onPress={() => { props.navigation.navigate('ThunkPostData') }} color={'rgba(0,0,50,0.9)'} />
+                </View>
+                <View style={styles.postButton}>
+                    <Button title={'get response'} onPress={() => { props.navigation.navigate('ApiResponse') }} color={'rgba(0,0,50,0.9)'} />
+                </View>
             </View>
         </View>
     )
@@ -32,9 +42,17 @@ const styles = StyleSheet.create({
         borderRadius: 15,
     },
     button: {
+        alignItems: 'center',
+        width: deviceWidth-20,
+        // backgroundColor: 'red',
+        // padding: 10,
         marginVertical: 10,
-        width: deviceWidth / 3,
-        borderRadius: 15,
+        backgroundColor:'rgba(99, 141, 145,0.5)',
+        borderRadius:20,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        paddingHorizontal:10,
+        paddingVertical:10,
     },
     viewStyle: {
         flex: 1,
@@ -56,5 +74,28 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
         alignSelf: 'center',
     },
+    titleStyle:{
+        fontSize:20,
+        color:'black',
+        fontStyle:'normal',
+        textAlign:'left',
+        fontWeight:'800',
+    },
+    containerStyle:{
+        width:deviceWidth-20,
+        marginHorizontal:10
+    },
+    descriptionTextStyle:{
+        color:'black',
+        fontSize:17,
+        fontWeight:'200',
+        textAlign:'justify',
+        paddingVertical:5,
+    },
+    logoImageStyle:{
+        width:50,
+        height:50,
+        borderRadius:10,
+    }
 })
 export default ApiCall

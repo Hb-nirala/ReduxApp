@@ -11,7 +11,11 @@ const Loader = ({showLoader}) => {
       transparent={true}
       animationType='fade'
     > 
-      <BlurView style={styles.mainContainer}>
+      <BlurView 
+      style={styles.mainContainer}
+      blurRadius={8}
+      blurAmount={10}
+      blurType='light'>
       <LottieView
         source={require('../../../assets/Lottie/Loder.json')}
         autoPlay={true}
@@ -27,7 +31,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     justifyContent: 'center',
     flex: 1,
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
     alignItems: 'center',
   },
   lottieContainer: {

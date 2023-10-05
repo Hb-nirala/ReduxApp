@@ -1,10 +1,12 @@
-import { View, Text, StyleSheet, Dimensions, Button, FlatList, Alert, BackHandler } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, Button, FlatList, Alert, BackHandler ,ScrollView} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { onDeleteData, } from '../../Redux/productReducer'
 import { onUserLogout } from '../../Redux/loginReducer'
 import { setEditItem } from '../../Redux/editProductItemReducer'
 import Loader from '../../components/Loader'
+import ButtonWithImage from '../../components/ButtonWithImage/ButtonWithImage'
+import { HomeTabImages } from '../../utils/appStrings'
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height  
@@ -90,30 +92,34 @@ const Home = (props) => {
                 {/* <Text style={styles.userDataStyle}>{authorizedUserData.pass}</Text> */}
                 {/* <Text style={styles.userDataStyle}>{authorizedUserData.phone}</Text> */}
             </View>
-            <View style={styles.viewButtonStyle}>
-                <View style={styles.button}>
-                    <Button title={'Api Response'} onPress={() => { props.navigation.navigate('ApiNavigator',{screen:'ApiResponse'}) }} color={'rgba(0,0,50,0.9)'} />
-                </View>
-                <View style={styles.button}>
-                    <Button title={'Add'} onPress={() => { props.navigation.navigate('AddProduct') }} color={'rgba(0,0,50,0.9)'} />
-                </View>
-            </View>
-            <View style={styles.viewButtonStyle}>
-                <View style={styles.button}>
-                    <Button title={'Go to Api Call'} onPress={() => { props.navigation.navigate('ApiNavigator', { screen: 'ApiCall' }) }} color={'rgba(0,0,50,0.9)'} />
-                </View>
-                <View style={styles.button}>
-                    <Button title={'Go to ChatApp'} onPress={() => { props.navigation.navigate('Chats', { screen: 'TwilioChatWelcomeScreen' }) }} color={'rgba(0,0,50,0.9)'} />
-                </View>
-            </View>
-            <View style={styles.button}>
-                <Button title={'Go to Cart'} onPress={() => { props.navigation.navigate('Cart') }} color={'rgba(0,0,50,0.9)'} />
-            </View>
+            <ScrollView style={{flex:1}}>
+            <ButtonWithImage
+                Title={"Hello"}
+                imageSource={{ uri: HomeTabImages.api_home_banner }}
+                onPress={() => { props.navigation.navigate('ApiNavigator', { screen: 'ApiResponse' }) }}
+            />
+            <ButtonWithImage
+                Title={"Add"}
+                imageSource={{ uri: HomeTabImages.add_task_home_banner }}
+                onPress={() => { props.navigation.navigate('AddProduct') }}
+            />
+            <ButtonWithImage
+                Title={"Go to ChatApp"}
+                imageSource={{ uri: HomeTabImages.chat_home_banner }}
+                onPress={() => { props.navigation.navigate('Chats', { screen: 'TwilioChatWelcomeScreen' }) }}
+            />
+            <ButtonWithImage
+                Title={"Go to Cart"}
+                imageSource={{ uri: HomeTabImages.shopping_cart_home_banner }}
+                onPress={() => { props.navigation.navigate('Cart') }}
+            /> 
+            <Text>Upcoming Task</Text>
             <FlatList
                 data={productReducerData}
                 style={{ flex: 1 }}
                 renderItem={renderItem}
             />
+            </ScrollView>
             <Loader showLoader={showLoader}/>
         </View>
     )

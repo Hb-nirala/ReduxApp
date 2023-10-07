@@ -1,11 +1,13 @@
-import { View, Text, StyleSheet, Dimensions, Button, TouchableOpacity, Image } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, Button, TouchableOpacity, Image,ScrollView } from 'react-native'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchNews } from '../../Redux/thunkActions'
 import { fetchData, getApiCall } from '../../Redux/thunkReducer'
 import Icon from 'react-native-vector-icons/AntDesign'
 import HeaderBoldText from '../../components/Text/HeaderBoldText'
-import { Api, ApiTabImages } from '../../utils/appStrings'
+import { Api, ApiTabImages, TabHeaderTitle } from '../../utils/appStrings'
+import FontRegularText from '../../components/Text/FontRegularText'
+import FontMediumText from '../../components/Text/FontMediumText'
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
@@ -13,10 +15,10 @@ const deviceHeight = Dimensions.get('screen').height
 const ApiCall = (props) => {
     return (
         <View style={styles.viewStyle}>
-                <HeaderBoldText headerTitle={"API"} />
-            <View style={styles.containerStyle}>
-                <Text style={styles.titleStyle}>{Api.get_api_title}</Text>
-                <Text style={styles.descriptionTextStyle}>{Api.get_api_description}</Text>
+            <HeaderBoldText>{TabHeaderTitle.api}</HeaderBoldText>
+            <ScrollView style={styles.containerStyle} showsVerticalScrollIndicator={false}>
+                <FontMediumText style={styles.titleStyle}>{Api.get_api_title}</FontMediumText>
+                <FontRegularText style={styles.descriptionTextStyle}>{Api.get_api_description}</FontRegularText>
                 <TouchableOpacity style={styles.button} onPress={() => { props.navigation.navigate('ThunkResponseData') }}>
                     <Text>{Api.get_api_buttonText}</Text>
                     <Image
@@ -24,13 +26,25 @@ const ApiCall = (props) => {
                         source={{ uri: ApiTabImages.get_api_image }}
                         resizeMode='cover' />
                 </TouchableOpacity>
-                <View style={styles.postButton}>
-                    <Button title={'Go to call post API'} onPress={() => { props.navigation.navigate('ThunkPostData') }} color={'rgba(0,0,50,0.9)'} />
-                </View>
-                <View style={styles.postButton}>
-                    <Button title={'get response'} onPress={() => { props.navigation.navigate('ApiResponse') }} color={'rgba(0,0,50,0.9)'} />
-                </View>
-            </View>
+                <FontMediumText style={styles.titleStyle}>{Api.call_post_api_title}</FontMediumText>
+                <FontRegularText style={styles.descriptionTextStyle}>{Api.post_api_description}</FontRegularText>
+                <TouchableOpacity style={styles.button} onPress={() => { props.navigation.navigate('ThunkPostData') }}>
+                    <Text>{Api.call_post_api}</Text>
+                    <Image
+                        style={styles.logoImageStyle}
+                        source={{ uri: ApiTabImages.get_api_image }}
+                        resizeMode='cover' />
+                </TouchableOpacity>
+                <FontMediumText style={styles.titleStyle}>{Api.call_get_response_title}</FontMediumText>
+                <FontRegularText style={styles.descriptionTextStyle}>{Api.call_get_response_description}</FontRegularText>
+                <TouchableOpacity style={styles.button} onPress={() => { props.navigation.navigate('ApiResponse') }}>
+                    <Text>{Api.call_get_response_api}</Text>
+                    <Image
+                        style={styles.logoImageStyle}
+                        source={{ uri: ApiTabImages.get_api_image }}
+                        resizeMode='cover' />
+                </TouchableOpacity>
+            </ScrollView>
         </View>
     )
 }
@@ -75,11 +89,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     titleStyle:{
-        fontSize:20,
+        fontSize:18,
         color:'black',
         fontStyle:'normal',
         textAlign:'left',
-        fontWeight:'800',
+        // fontWeight:'800',
     },
     containerStyle:{
         width:deviceWidth-20,

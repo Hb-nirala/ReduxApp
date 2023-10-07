@@ -1,5 +1,6 @@
 import * as yup from 'yup'
 import TrackPlayer,{State,Capability,AppKilledPlaybackBehavior,RepeatMode} from 'react-native-track-player'
+import {Dimensions} from 'react-native'
 
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
@@ -115,10 +116,10 @@ export const dataArray = [
 
 export const signUpInitialValuesSchema = { fullname: '', email: '', pass: '', phone: '' }
 
-// export const appDimension = {
-//     deviceWidth: Dimensions.get('screen').width,
-//     deviceHeight: Dimensions.get('screen').height
-// }
+export const appDimension = {
+    deviceWidth: Dimensions.get('screen').width,
+    deviceHeight: Dimensions.get('screen').height
+}
 
 // const TwilioChat = {
 //     TWILIO_ACCOUNT_SID: 'ACda998d40424002c207a695612e8e2c42',

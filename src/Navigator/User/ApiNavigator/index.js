@@ -8,7 +8,8 @@ import ThunkResponseData from '../../../Screens/ApiCall/ThunkResponseData';
 const Stack = createStackNavigator();
 const ApiNavigator = () => {
   return (
-      <Stack.Navigator>
+      <Stack.Navigator
+      initialRouteName='ApiCall'>
           <Stack.Screen name='ApiCall' component={ApiCall} options={{ headerShown: false }}/>
           <Stack.Screen name='ApiResponse' component={ApiResponse} options={{ headerShown: false }}/>
           <Stack.Screen name='ThunkPostData' component={ThunkPostData} options={{ headerShown: false }}/>

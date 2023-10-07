@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/AntDesign'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem } from '../../Redux/CartRedux/CartAction'
 import CartSummaryModel from '../../components/Model/CartSummaryModel'
+import { TabHeaderTitle } from '../../utils/appStrings'
+import HeaderBoldText from '../../components/Text/HeaderBoldText'
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
@@ -51,10 +53,7 @@ const Cart = (props) => {
     }
     return (
         <View style={styles.viewStyle}>
-            <View style={styles.headerViewStyle}>
-                <Icon name='arrowleft' size={25} onPress={() => { props.navigation.navigate('Home') }} color='black' style={{ marginLeft: 10, marginTop: 10 }} />
-                <Text style={styles.salutationStyle}>Cart</Text>
-            </View>
+            <HeaderBoldText>{TabHeaderTitle.cart}</HeaderBoldText>
             <FlatList
                 data={cartItemArray}
                 style={{ flex: 1 }}

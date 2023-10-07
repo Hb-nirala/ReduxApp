@@ -6,7 +6,7 @@ import { onUserLogout } from '../../Redux/loginReducer'
 import { setEditItem } from '../../Redux/editProductItemReducer'
 import Loader from '../../components/Loader'
 import ButtonWithImage from '../../components/ButtonWithImage/ButtonWithImage'
-import { HomeTabImages } from '../../utils/appStrings'
+import { HomeTabImages, HomeTabString } from '../../utils/appStrings'
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height  
@@ -94,22 +94,22 @@ const Home = (props) => {
             </View>
             <ScrollView style={{flex:1}}>
             <ButtonWithImage
-                Title={"Hello"}
+                Title={HomeTabString.api_response}
                 imageSource={{ uri: HomeTabImages.api_home_banner }}
-                onPress={() => { props.navigation.navigate('ApiNavigator', { screen: 'ApiResponse' }) }}
+                onPress={() => { props.navigation.navigate('ApiNavigator') }}
             />
             <ButtonWithImage
-                Title={"Add"}
+                Title={HomeTabString.add}
                 imageSource={{ uri: HomeTabImages.add_task_home_banner }}
                 onPress={() => { props.navigation.navigate('AddProduct') }}
             />
             <ButtonWithImage
-                Title={"Go to ChatApp"}
+                Title={HomeTabString.go_to_chat_app}
                 imageSource={{ uri: HomeTabImages.chat_home_banner }}
                 onPress={() => { props.navigation.navigate('Chats', { screen: 'TwilioChatWelcomeScreen' }) }}
             />
             <ButtonWithImage
-                Title={"Go to Cart"}
+                Title={HomeTabString.go_to_cart}
                 imageSource={{ uri: HomeTabImages.shopping_cart_home_banner }}
                 onPress={() => { props.navigation.navigate('Cart') }}
             /> 

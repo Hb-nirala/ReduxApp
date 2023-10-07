@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { dataArray } from '../../utils/globalConstant'
 import Icon from 'react-native-vector-icons/AntDesign'
 import axios from 'axios'
+import HeaderView from '../../components/HeaderView/HeaderView'
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 
@@ -314,13 +315,16 @@ const ApiResponse = (props) => {
     }
 
     return (
-        <View style={styles.viewStyle}>
-            <View style={styles.headerViewStyle}>
-                <Icon name='arrowleft' size={25} onPress={() => { props.navigation.navigate('Home') }} color='black' style={{ marginLeft: 10, marginTop: 10 }} />
-                <Text style={styles.textStyle}>{'Api Response'}</Text>
-            </View>
-            {/**static array data flatlist */}
-            {/* <FlatList
+        <View style={styles.containerStyle}>
+            <HeaderView
+                Title={'Api Response'}
+                onPress={() => { props.navigation.goBack() }}
+                style={styles.headerViewStyle}
+            />
+            <View style={styles.viewStyle}>
+
+                {/**static array data flatlist */}
+                {/* <FlatList
                 data={staticArray}
                 // pagingEnabled={true}
                 style={{ flex: 1 }}
@@ -334,28 +338,29 @@ const ApiResponse = (props) => {
                 onEndThreshold={0}
             /> */}
 
-            {/**Api response FlatList */}
-            <FlatList
-                data={users}
-                // pagingEnabled={true}
-                style={{ flex: 1 }}
-                keyExtractor={(item) => item.email}
-                renderItem={renderItem}
-                onEndReached={loadMoreItem}
-                // onStartReachedThreshold={0}
-                // onStartReached={loadLessItem} 
-                // ListHeaderComponent={renderLoader}
-                refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh} />}
-                ListFooterComponent={currentPage == 1 ? null : renderLoader}
-                onEndThreshold={0}
-            />
-            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: deviceWidth }}>
-                {/* <View style={styles.button}>
+                {/**Api response FlatList */}
+                <FlatList
+                    data={users}
+                    // pagingEnabled={true}
+                    style={{ flex: 1 }}
+                    keyExtractor={(item) => item.email}
+                    renderItem={renderItem}
+                    onEndReached={loadMoreItem}
+                    // onStartReachedThreshold={0}
+                    // onStartReached={loadLessItem} 
+                    // ListHeaderComponent={renderLoader}
+                    refreshControl={<RefreshControl refreshing={isLoading} onRefresh={onRefresh} />}
+                    ListFooterComponent={currentPage == 1 ? null : renderLoader}
+                    onEndThreshold={0}
+                />
+                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: deviceWidth }}>
+                    {/* <View style={styles.button}>
                     <Button title={'more'} onPress={() => { showMoreData() }} color={'rgba(0,0,50,0.9)'} />
                 </View>
                 <View style={styles.button}>
                     <Button title={'Less'} onPress={() => { showPrevData() }} color={'rgba(0,0,50,0.9)'} />
                 </View> */}
+                </View>
             </View>
         </View>
     )
@@ -414,8 +419,9 @@ const styles = StyleSheet.create({
     viewStyle: {
         flex: 1,
         backgroundColor: 'rgb(225,245,230)',
-        alignItems: 'center',
-        paddingBottom: 10,
+        // alignItems: 'center',
+        // paddingBottom: 10,
+        // backgroundColor:'red'
     },
     headerViewStyle: {
         flexDirection: 'row',
@@ -423,6 +429,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         alignSelf: 'flex-start'
+    },
+    containerStyle:{
+        flex:1,
+        backgroundColor:'rgb(225,245,230)'
     }
 })
 export default ApiResponse

@@ -1,12 +1,13 @@
 import { View, Text, Button, Dimensions } from 'react-native'
 import React, { useState, useCallback } from 'react'
-import Header from '../../components/Header/HeaderView';
+import HeaderView from '../../components/HeaderView/HeaderView';
 import YoutubePlayer from "react-native-youtube-iframe";
+import HeaderBoldText from '../../components/Text/HeaderBoldText';
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 
-const YoutubeVideos = () => {
+const YoutubeVideos = (props) => {
   const [playing, setPlaying] = useState(false)
 
   const onStateChange = useCallback((state) => {
@@ -22,7 +23,10 @@ const YoutubeVideos = () => {
 
   return (
     <>
-      <Header HeaderTitle={'Entertainment'} />
+      <HeaderView
+        onPress={() => { props.navigation.goBack() }}
+        Title={'Entertainment'}
+      />
       <View>
         <YoutubePlayer
           webViewStyle={{ marginHorizontal: 10 }}

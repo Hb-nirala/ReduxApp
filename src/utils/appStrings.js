@@ -1,4 +1,4 @@
-export const Home = {
+export const HomeTabString = {
     api_response:'Api Response',
     add:'Add',
     go_to_api_call:'Go to Api Call',
@@ -12,6 +12,12 @@ export const Enjoy = {
     youtube_title:'You can go to youtube from here and enjoy with youtube'
 }
 export const Api = {
+    call_post_api:'Call Post Api',
+    call_post_api_title:'Post api',
+    post_api_description:`It is fake api store. This api call with the help of redux thunk method it only motive to explore redux thunk with Reducer and also that post data to this api and store data in cloud`,
+    call_get_response_api:'Call Get Response',
+    call_get_response_title:'Get api',
+    call_get_response_description:`It is rendom api user's data. This api call with the help of redux thunk method it only motive to explore redux thunk with Reducer and see lot's of data of rendom user's and understand`,
     get_api_title:'Get api',
     get_api_buttonText:'Call get api',
     get_api_description:`It is fake api store user's data. This api call with the help of redux thunk method it only motive to explore redux thunk with Reducer`

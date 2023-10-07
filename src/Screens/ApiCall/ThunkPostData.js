@@ -4,6 +4,8 @@ import Icon from 'react-native-vector-icons/AntDesign'
 import ReactButton from '../../components/Buttons/ReactButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { postUsersData } from '../../Redux/ApiCalls/newsSlicePost'
+import HeaderView from '../../components/HeaderView/HeaderView'
+import { appDimension } from '../../utils/globalConstant'
 
 
 const deviceWidth = Dimensions.get('screen').width
@@ -35,10 +37,11 @@ const ThunkPostData = (props) => {
 
     return (
         <View style={styles.viewStyle}>
-            <View style={styles.headerStyle}>
-                <Icon name='arrowleft' size={25} onPress={() => { props.navigation.goBack() }} color='black' style={{}} />
-                <Text style={styles.salutationStyle}>Post Data</Text>
-            </View>
+            <HeaderView
+                Title={'Post Data'}
+                onPress={() => { props.navigation.goBack() }}
+                style={styles.headerViewStyle}
+            />
             <TextInput style={styles.input}
                 placeholder="Enter Name"
                 onChangeText={(text) => { setName(text) }}
@@ -56,7 +59,7 @@ const ThunkPostData = (props) => {
                 onChangeText={(text) => { setMobileNo(text) }}
                 value={mobileNo}
             />
-            <ReactButton buttonTitle={'Submit'} onPress={() => { submitUserData() }} />
+            <ReactButton style={styles.buttonStyle} buttonTitle={'Submit'} onPress={() => { submitUserData() }} />
         </View>
     )
 }
@@ -65,7 +68,7 @@ const styles = StyleSheet.create({
     viewStyle: {
         flex: 1,
         backgroundColor: 'rgb(225,245,230)',
-        alignItems: 'center',
+        // alignItems: 'center',
     },
     headerStyle: {
         flexDirection: 'row',
@@ -93,5 +96,11 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingHorizontal: 10,
     },
+    headerViewStyle:{
+        width:appDimension.deviceWidth*0.64,
+    },
+    buttonStyle:{
+        alignSelf:'center'
+    }
 })
 export default ThunkPostData

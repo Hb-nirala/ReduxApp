@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native'
+import FontRegularText from '../Text/FontRegularText'
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
@@ -12,7 +13,7 @@ const ButtonWithImage = ({ onPress, imageSource, imageStyle, style, Title }) => 
                 source={imageSource}
                 resizeMode='cover' />
             <View style={[styles.viewStyle, style]}>
-                <Text style={styles.textStyle}>{Title}</Text>
+                <FontRegularText style={styles.textStyle}>{Title}</FontRegularText>
             </View>
         </TouchableOpacity>
     )

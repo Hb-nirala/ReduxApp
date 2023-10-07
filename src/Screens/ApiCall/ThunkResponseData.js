@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { View, Text, StyleSheet, FlatList,Dimensions } from 'react-native'
 import { getUsers } from '../../Redux/ApiCalls/newsSlice'
 import Icon from 'react-native-vector-icons/AntDesign'
+import HeaderView from '../../components/HeaderView/HeaderView'
 
 
 const deviceWidth = Dimensions.get('screen').width
@@ -37,10 +38,10 @@ const ThunkResponseData = (props) => {
 
   return (
     <View style={styles.viewStyle}>
-      <View style={styles.headerStyle}>
-        <Icon name='arrowleft' size={25} onPress={() => { props.navigation.goBack() }} color='black' style={{}} />
-        <Text style={styles.salutationStyle}>Fake Store Users Data</Text>
-      </View>
+      <HeaderView
+      Title={`User's Data`}
+      onPress={()=>{props.navigation.goBack()}}
+      />
       {loading ? <Text>Loading...</Text> :
         <FlatList
           data={news}
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
   viewStyle: {
     flex: 1,
     backgroundColor: 'rgb(225,245,230)',
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   salutationStyle: {
     fontSize: 20,

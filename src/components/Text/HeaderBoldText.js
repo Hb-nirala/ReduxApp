@@ -1,20 +1,21 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
-const HeaderBoldText = ({headerTitle}) => {
+const HeaderBoldText = ({children,style}) => {
   return (
     <View style={styles.headerViewStyle}>
-      <Text style={styles.headerTextTitleStyle}>{headerTitle}</Text>
+      <Text style={[styles.headerTextTitleStyle,style]}>{children}</Text>
     </View>
   )
 }
 const styles=StyleSheet.create({
-    headerTextTitleStyle:{
-        fontSize:20,
-        color:'rgba(0,0,50,0.9)',
-        fontStyle:'normal',
-        fontWeight:'bold',
-    },
+  headerTextTitleStyle: {
+    fontSize: 20,
+    fontStyle: 'normal',
+    fontFamily: 'Poppins-Bold',
+    color: 'black',
+    textAlign:'center',
+  },
     headerViewStyle:{
         marginVertical:10,
     }

@@ -21,7 +21,7 @@ const Entertainment = (props) => {
 
     return (
         <View style={styles.containerStyle}>
-            <HeaderBoldText headerTitle={"Enjoy"} />
+            <HeaderBoldText>{"Enjoy"}</HeaderBoldText>
             <TouchableOpacity style={styles.youtubeButtonStyle}
                 onPress={() => {
                     Linking.openURL('https://www.youtube.com');

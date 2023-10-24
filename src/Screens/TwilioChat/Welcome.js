@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Dimensions, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { useEffect, useState } from "react";
+import { BackHandler, Dimensions, Image, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Icon from 'react-native-vector-icons/AntDesign'
 
 
@@ -9,6 +9,23 @@ const deviceHeight = Dimensions.get('screen').height;
 export const WelcomeScreen = (props) => {
     const [username, setUsername] = useState('');
 
+    useEffect(() => {
+        if (Platform.OS === 'android') {
+            BackHandler.addEventListener('hardwareBackPress', backButtonHandler)
+        }
+        return () => {
+            if (Platform.OS === 'android') {
+                BackHandler.remove()
+            }
+        }
+        // BackHandler.exitApp()
+        // return () => BackHandler.removeEventListener('hardwareBackPress', backButtonHandler)
+    }, [])
+
+    const backButtonHandler = () => {
+        props.navigation.navigate('Home')
+        return true
+    }
    
 
 

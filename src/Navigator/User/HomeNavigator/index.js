@@ -6,7 +6,8 @@ import Home from '../../../Screens/Home/Home';
 const Stack = createStackNavigator();
 const HomeNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    initialRouteName='Home'>
         <Stack.Screen name='Home' component={Home} options={{ headerShown: false }}/>
         <Stack.Screen name='AddProduct' component={AddProduct} options={{ headerShown: false }}/>
     </Stack.Navigator >

@@ -45,8 +45,9 @@ const UserNavigator = () => {
     return (
         <Tab.Navigator screenOptions={{
             headerShown: false
-        }}>
-            <Tab.Screen name="HomeNavigator" component={HomeNavigator}
+        }}
+        initialRouteName='Home'>
+            <Tab.Screen name="Home" component={HomeNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => {
                         if (focused) {
@@ -71,7 +72,7 @@ const UserNavigator = () => {
                     },
                     tabBarShowLabel: false
                 }} />
-            <Tab.Screen name="ApiNavigator" component={ApiNavigator}
+            <Tab.Screen name="ApiCall" component={ApiNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => {
                         if (focused) {
@@ -83,7 +84,7 @@ const UserNavigator = () => {
                     },
                     tabBarShowLabel: false
                 }} />
-            <Tab.Screen name="Entertainment" component={EntertainmentNavigator}
+            <Tab.Screen name="EntertainmentPage" component={EntertainmentNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => {
                         if (focused) {
@@ -95,7 +96,7 @@ const UserNavigator = () => {
                     },
                     tabBarShowLabel: false
                 }} />
-            <Tab.Screen name="Chats" component={TwilioChatNavigator}
+            <Tab.Screen name="TwilioChatWelcomeScreen" component={TwilioChatNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => {
                         if (focused) {

@@ -9,7 +9,8 @@ const Stack = createStackNavigator();
 
 const EntertainmentNavigator = () => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+        initialRouteName='EntertainmentPage'>
             <Stack.Screen name="EntertainmentPage" component={Entertainment} options={{ headerShown: false }} />
             <Stack.Screen name="YoutubeVideos" component={YoutubeVideos} options={{ headerShown: false }} />
             <Stack.Screen name="Music" component={Music} options={{ headerShown: false }} />

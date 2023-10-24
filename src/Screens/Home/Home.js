@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Dimensions, Button, FlatList, Alert, BackHandler ,ScrollView} from 'react-native'
+import { View, Text, StyleSheet, Dimensions, Button, FlatList, Alert, BackHandler ,ScrollView,Platform} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { onDeleteData, } from '../../Redux/productReducer'
@@ -7,7 +7,6 @@ import { setEditItem } from '../../Redux/editProductItemReducer'
 import Loader from '../../components/Loader'
 import ButtonWithImage from '../../components/ButtonWithImage/ButtonWithImage'
 import { HomeTabImages, HomeTabString } from '../../utils/appStrings'
-
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height  
 
@@ -20,17 +19,25 @@ const Home = (props) => {
         setShowLoader(true)
         setTimeout(() => {
             setShowLoader(false)      
-        }, 50000);
+        }, 10000);
     }, [])
 
     useEffect(() => {
-        BackHandler.addEventListener('hardwareBackPress', backButtonHandler)
+        if (Platform.OS === 'android') {
+            BackHandler.addEventListener('hardwareBackPress', backButtonHandler)
+        }
+        return () => {
+            if (Platform.OS === 'android') {
+                BackHandler.remove()
+            }
+        }
         // BackHandler.exitApp()
         // return () => BackHandler.removeEventListener('hardwareBackPress', backButtonHandler)
     }, [])
 
-    const backButtonHandler = () => {
+    const backButtonHandler = () => {   
         BackHandler.exitApp();
+        return true
     }
 
     const dispatch = useDispatch()
@@ -92,11 +99,11 @@ const Home = (props) => {
                 {/* <Text style={styles.userDataStyle}>{authorizedUserData.pass}</Text> */}
                 {/* <Text style={styles.userDataStyle}>{authorizedUserData.phone}</Text> */}
             </View>
-            <ScrollView style={{flex:1}}>
+            <ScrollView showsVerticalScrollIndicator={false}>
             <ButtonWithImage
                 Title={HomeTabString.api_response}
                 imageSource={{ uri: HomeTabImages.api_home_banner }}
-                onPress={() => { props.navigation.navigate('ApiNavigator') }}
+                onPress={() => { props.navigation.navigate('ApiCall') }}
             />
             <ButtonWithImage
                 Title={HomeTabString.add}
@@ -106,7 +113,7 @@ const Home = (props) => {
             <ButtonWithImage
                 Title={HomeTabString.go_to_chat_app}
                 imageSource={{ uri: HomeTabImages.chat_home_banner }}
-                onPress={() => { props.navigation.navigate('Chats', { screen: 'TwilioChatWelcomeScreen' }) }}
+                onPress={() => { props.navigation.navigate('TwilioChatWelcomeScreen') }}
             />
             <ButtonWithImage
                 Title={HomeTabString.go_to_cart}

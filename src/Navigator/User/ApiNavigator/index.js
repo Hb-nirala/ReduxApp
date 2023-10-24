@@ -9,6 +9,10 @@ const Stack = createStackNavigator();
 const ApiNavigator = () => {
   return (
       <Stack.Navigator
+      screenOptions={{
+        headerMode:'screen',
+        gestureEnabled:false,
+      }}
       initialRouteName='ApiCall'>
           <Stack.Screen name='ApiCall' component={ApiCall} options={{ headerShown: false }}/>
           <Stack.Screen name='ApiResponse' component={ApiResponse} options={{ headerShown: false }}/>

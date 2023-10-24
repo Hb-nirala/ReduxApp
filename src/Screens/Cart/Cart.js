@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Dimensions, FlatList, Image } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, FlatList, Image, Platform, BackHandler } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { cartItemArray } from '../../utils/globalConstant'
 import Icon from 'react-native-vector-icons/AntDesign'
@@ -34,6 +34,24 @@ const Cart = (props) => {
     useEffect(() => {
         calculateTotalPrice()
     }, [items])
+
+    useEffect(() => {
+        if (Platform.OS === 'android') {
+            BackHandler.addEventListener('hardwareBackPress', backButtonHandler)
+        }
+        return () => {
+            if (Platform.OS === 'android') {
+                BackHandler.remove()
+            }
+        }
+        // BackHandler.exitApp()
+        // return () => BackHandler.removeEventListener('hardwareBackPress', backButtonHandler)
+    }, [])
+
+    const backButtonHandler = () => {
+        props.navigation.navigate('Home')
+        return true
+    }
 
     const renderItem = ({ item }) => {
         return (

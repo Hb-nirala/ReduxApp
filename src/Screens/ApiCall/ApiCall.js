@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet, Dimensions, Button, TouchableOpacity, Image,ScrollView } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, Dimensions, Button, TouchableOpacity, Image,ScrollView, Platform, BackHandler } from 'react-native'
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchNews } from '../../Redux/thunkActions'
 import { fetchData, getApiCall } from '../../Redux/thunkReducer'
@@ -13,6 +13,25 @@ const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 
 const ApiCall = (props) => {
+
+    useEffect(() => {
+        if (Platform.OS === 'android') {
+            BackHandler.addEventListener('hardwareBackPress', backButtonHandler)
+        }
+        return () => {
+            if (Platform.OS === 'android') {
+                BackHandler.remove()
+            }
+        }
+        // BackHandler.exitApp()
+        // return () => BackHandler.removeEventListener('hardwareBackPress', backButtonHandler)
+    }, [])
+
+    const backButtonHandler = () => {
+        props.navigation.navigate('Home')
+        return true
+    }
+
     return (
         <View style={styles.viewStyle}>
             <HeaderBoldText>{TabHeaderTitle.api}</HeaderBoldText>

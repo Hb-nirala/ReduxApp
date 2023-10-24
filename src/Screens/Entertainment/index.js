@@ -10,12 +10,20 @@ const deviceHeight = Dimensions.get('screen').height
 const Entertainment = (props) => {
 
     useEffect(() => {
-        BackHandler.addEventListener('hardwareBackPress', navigationBack)
-        return () => BackHandler.removeEventListener('hardwareBackPress', navigationBack)
+        if (Platform.OS === 'android') {
+            BackHandler.addEventListener('hardwareBackPress', backButtonHandler)
+        }
+        return () => {
+            if (Platform.OS === 'android') {
+                BackHandler.remove()
+            }
+        }
+        // BackHandler.exitApp()
+        // return () => BackHandler.removeEventListener('hardwareBackPress', backButtonHandler)
     }, [])
 
-    const navigationBack = () => {
-        props.navigation.goBack()
+    const backButtonHandler = () => {
+        props.navigation.navigate('Home')
         return true
     }
 

@@ -10,7 +10,8 @@ const Stack = createStackNavigator();
 
 const TwilioChatNavigator = () => {
     return (
-        <Stack.Navigator >
+        <Stack.Navigator 
+        initialRouteName='TwilioChatWelcomeScreen'>
             <Stack.Screen name="TwilioChatWelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name="TwilioChatListScreen" component={ChatListScreen} options={{ headerShown: false }} />
             <Stack.Screen name="TwilioChatCreateScreen" component={ChatCreateScreen} options={{ headerShown: false }} />

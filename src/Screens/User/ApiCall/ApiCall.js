@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { Api, ApiTabImages, TabHeaderTitle } from '../../../utils/appStrings'
 import HeaderBoldText from '../../../components/Text/HeaderBoldText'
 import FontMediumText from '../../../components/Text/FontMediumText'
+import FontRegularText from '../../../components/Text/FontRegularText'
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 

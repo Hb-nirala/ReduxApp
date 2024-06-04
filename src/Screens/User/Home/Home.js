@@ -1,12 +1,12 @@
 import { View, Text, StyleSheet, Dimensions, Button, FlatList, Alert, BackHandler ,ScrollView,Platform} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { onDeleteData, } from '../../Redux/productReducer'
-import { onUserLogout } from '../../Redux/loginReducer'
-import { setEditItem } from '../../Redux/editProductItemReducer'
-import Loader from '../../components/Loader'
-import ButtonWithImage from '../../components/ButtonWithImage/ButtonWithImage'
-import { HomeTabImages, HomeTabString } from '../../utils/appStrings'
+import { onDeleteData, } from '../../../Redux/productReducer'
+import { onUserLogout } from '../../../Redux/loginReducer'
+import { setEditItem } from '../../../Redux/editProductItemReducer'
+import Loader from '../../../components/Loader'
+import ButtonWithImage from '../../../components/ButtonWithImage/ButtonWithImage'
+import { HomeTabImages, HomeTabString } from '../../../utils/appStrings'
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height  
 

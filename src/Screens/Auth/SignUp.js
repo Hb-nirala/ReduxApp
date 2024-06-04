@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet, TextInput, Button, Dimensions, ScrollView, Alert } from 'react-native'
 import React, { useEffect, } from 'react'
-import { addSignUpData, setSignUpData } from '../Redux/signUpReducer';
+import { addSignUpData, setSignUpData } from '../../Redux/signUpReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
-import { signUpInitialValuesSchema, signUpValidationSchema } from '../utils/globalConstant';
+import { signUpInitialValuesSchema, signUpValidationSchema } from '../../utils/globalConstant';
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height

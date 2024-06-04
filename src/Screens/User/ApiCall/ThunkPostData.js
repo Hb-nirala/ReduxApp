@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet, TextInput, Dimensions } from 'react-native'
 import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/AntDesign'
-import ReactButton from '../../components/Buttons/ReactButton'
+import ReactButton from '../../../components/Buttons/ReactButton'
 import { useDispatch, useSelector } from 'react-redux'
-import { postUsersData } from '../../Redux/ApiCalls/newsSlicePost'
-import HeaderView from '../../components/HeaderView/HeaderView'
-import { appDimension } from '../../utils/globalConstant'
+import { postUsersData } from '../../../Redux/ApiCalls/newsSlicePost'
+import HeaderView from '../../../components/HeaderView/HeaderView'
+import { appDimension } from '../../../utils/globalConstant'
 
 
 const deviceWidth = Dimensions.get('screen').width

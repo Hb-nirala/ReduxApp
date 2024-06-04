@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet, Linking, TouchableOpacity, Dimensions, Image, Alert, Button, BackHandler, Platform, ImageBackground } from 'react-native'
 import React, { useState, useCallback, useEffect } from 'react'
 import Icon from 'react-native-vector-icons/AntDesign';
-import HeaderBoldText from '../../components/Text/HeaderBoldText';
-import { Enjoy, EnjoyTabImages, music } from '../../utils/appStrings';
+import HeaderBoldText from '../../../components/Text/HeaderBoldText';
+import { Enjoy, EnjoyTabImages, music } from '../../../utils/appStrings';
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height

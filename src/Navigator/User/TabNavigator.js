@@ -1,15 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../../Screens/Home/Home';
-import ApiResponse from '../../Screens/ApiCall/ApiResponse';
-import Cart from '../../Screens/Cart/Cart';
-import TwilioChatNavigator from './TwilioChatNavigator';
-import EntertainmentNavigator from './EntertainmentNavigator';
-import Entertainment from '../../Screens/Entertainment';
 import Icon from 'react-native-vector-icons/Entypo';
 import { Text, StyleSheet } from 'react-native';
 import HomeNavigator from './HomeNavigator';
 import ApiNavigator from './ApiNavigator';
+import EntertainmentNavigator from './EntertainmentNavigator';
+import TwilioChatNavigator from './TwilioChatNavigator';
+import Cart from '../../Screens/User/Cart/Cart';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,7 +43,7 @@ const UserNavigator = () => {
         <Tab.Navigator screenOptions={{
             headerShown: false
         }}
-        initialRouteName='Home'>
+            initialRouteName='Home'>
             <Tab.Screen name="Home" component={HomeNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => {
@@ -112,8 +109,8 @@ const UserNavigator = () => {
     )
 }
 const styles = StyleSheet.create({
-iconStyle :{
+    iconStyle: {
 
-}
+    }
 })
 export default UserNavigator

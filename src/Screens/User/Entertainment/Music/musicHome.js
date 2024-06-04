@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Image, Dimensions, FlatList, TouchableOpacity }
 import React, { useEffect, useRef, useState } from 'react'
 import Icon from 'react-native-vector-icons/AntDesign'
 import TrackPlayer, { State, useProgress } from 'react-native-track-player'
-import { musicListArray } from '../../../utils/globalConstant'
+import { musicListArray } from '../../../../utils/globalConstant'
 import Slider from '@react-native-community/slider'
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height

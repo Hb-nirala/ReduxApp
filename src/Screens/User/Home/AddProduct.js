@@ -1,9 +1,9 @@
 import { View, Text, TextInput, StyleSheet, Dimensions, Button, ScrollView, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addProductData, onEditData } from '../../Redux/productReducer'
+import { addProductData, onEditData } from '../../../Redux/productReducer'
 import Icon from 'react-native-vector-icons/AntDesign'
-import { setEditItem } from '../../Redux/editProductItemReducer'
+import { setEditItem } from '../../../Redux/editProductItemReducer'
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height

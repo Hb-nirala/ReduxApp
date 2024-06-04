@@ -1,10 +1,10 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import { WelcomeScreen } from '../../../Screens/TwilioChat/Welcome';
-import { ChatListScreen } from '../../../Screens/TwilioChat/chatListScreen';
-import { ChatCreateScreen } from '../../../Screens/TwilioChat/chatCreateScreen';
-import { ChatRoomScreen } from '../../../Screens/TwilioChat/chatRoomScreen';
-import AddParticipants from '../../../Screens/TwilioChat/addParticipants';
+import { WelcomeScreen } from '../../../Screens/User/TwilioChat/Welcome';
+import { ChatListScreen } from '../../../Screens/User/TwilioChat/chatListScreen';
+import { ChatCreateScreen } from '../../../Screens/User/TwilioChat/chatCreateScreen';
+import { ChatRoomScreen } from '../../../Screens/User/TwilioChat/chatRoomScreen';
+import AddParticipants from '../../../Screens/User/TwilioChat/addParticipants';
 
 const Stack = createStackNavigator();
 

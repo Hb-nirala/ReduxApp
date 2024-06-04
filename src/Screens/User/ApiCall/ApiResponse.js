@@ -1,9 +1,9 @@
 import { View, Text, FlatList, StyleSheet, Dimensions, Alert, Button, Image, ActivityIndicator, RefreshControl } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { dataArray } from '../../utils/globalConstant'
 import Icon from 'react-native-vector-icons/AntDesign'
 import axios from 'axios'
-import HeaderView from '../../components/HeaderView/HeaderView'
+import { dataArray } from '../../../utils/globalConstant'
+import HeaderView from '../../../components/HeaderView/HeaderView'
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 

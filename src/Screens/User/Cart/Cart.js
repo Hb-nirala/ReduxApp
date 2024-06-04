@@ -1,12 +1,12 @@
 import { View, Text, StyleSheet, Dimensions, FlatList, Image, Platform, BackHandler } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { cartItemArray } from '../../utils/globalConstant'
+import { cartItemArray } from '../../../utils/globalConstant'
 import Icon from 'react-native-vector-icons/AntDesign'
 import { useDispatch, useSelector } from 'react-redux'
-import { addItem } from '../../Redux/CartRedux/CartAction'
-import CartSummaryModel from '../../components/Model/CartSummaryModel'
-import { TabHeaderTitle } from '../../utils/appStrings'
-import HeaderBoldText from '../../components/Text/HeaderBoldText'
+import { addItem } from '../../../Redux/CartRedux/CartAction'
+import CartSummaryModel from '../../../components/Model/CartSummaryModel'
+import { TabHeaderTitle } from '../../../utils/appStrings'
+import HeaderBoldText from '../../../components/Text/HeaderBoldText'
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height

@@ -1,14 +1,9 @@
-import { View, Text, StyleSheet, Dimensions, Button, TouchableOpacity, Image,ScrollView, Platform, BackHandler } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Image,ScrollView, Platform, BackHandler } from 'react-native'
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { fetchNews } from '../../Redux/thunkActions'
-import { fetchData, getApiCall } from '../../Redux/thunkReducer'
-import Icon from 'react-native-vector-icons/AntDesign'
-import HeaderBoldText from '../../components/Text/HeaderBoldText'
-import { Api, ApiTabImages, TabHeaderTitle } from '../../utils/appStrings'
-import FontRegularText from '../../components/Text/FontRegularText'
-import FontMediumText from '../../components/Text/FontMediumText'
-
+import { Api, ApiTabImages, TabHeaderTitle } from '../../../utils/appStrings'
+import HeaderBoldText from '../../../components/Text/HeaderBoldText'
+import FontMediumText from '../../../components/Text/FontMediumText'
+import FontRegularText from '../../../components/Text/FontRegularText'
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 

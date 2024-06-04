@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Dimensions, Image, FlatList, Pressable, ImageBackground } from 'react-native'
 import React,{useEffect,useState} from 'react'
-import { musicListArray, setupPlayer } from '../../../utils/globalConstant';
+import { musicListArray, setupPlayer } from '../../../../utils/globalConstant';
 import Icon from 'react-native-vector-icons/Feather'
 
 const deviceWidth = Dimensions.get('screen').width

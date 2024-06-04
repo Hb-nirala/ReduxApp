@@ -1,9 +1,9 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import ApiCall from '../../../Screens/ApiCall/ApiCall';
-import ApiResponse from '../../../Screens/ApiCall/ApiResponse';
-import ThunkPostData from '../../../Screens/ApiCall/ThunkPostData';
-import ThunkResponseData from '../../../Screens/ApiCall/ThunkResponseData';
+import ApiCall from '../../../Screens/User/ApiCall/ApiCall';
+import ApiResponse from '../../../Screens/User/ApiCall/ApiResponse';
+import ThunkPostData from '../../../Screens/User/ApiCall/ThunkPostData';
+import ThunkResponseData from '../../../Screens/User/ApiCall/ThunkResponseData';
 
 const Stack = createStackNavigator();
 const ApiNavigator = () => {

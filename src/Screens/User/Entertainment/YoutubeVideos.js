@@ -1,8 +1,8 @@
 import { View, Text, Button, Dimensions } from 'react-native'
 import React, { useState, useCallback } from 'react'
-import HeaderView from '../../components/HeaderView/HeaderView';
+import HeaderView from '../../../components/HeaderView/HeaderView';
 import YoutubePlayer from "react-native-youtube-iframe";
-import HeaderBoldText from '../../components/Text/HeaderBoldText';
+import HeaderBoldText from '../../../components/Text/HeaderBoldText';
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height

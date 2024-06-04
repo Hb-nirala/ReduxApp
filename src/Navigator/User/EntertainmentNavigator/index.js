@@ -1,9 +1,9 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import Entertainment from '../../../Screens/Entertainment';
-import YoutubeVideos from '../../../Screens/Entertainment/YoutubeVideos';
-import Music from '../../../Screens/Entertainment/Music/musicIndex';
-import MusicHome from '../../../Screens/Entertainment/Music/musicHome';
+import Entertainment from '../../../Screens/User/Entertainment';
+import YoutubeVideos from '../../../Screens/User/Entertainment/YoutubeVideos';
+import Music from '../../../Screens/User/Entertainment/Music/musicIndex';
+import MusicHome from '../../../Screens/User/Entertainment/Music/musicHome';
 
 const Stack = createStackNavigator();
 

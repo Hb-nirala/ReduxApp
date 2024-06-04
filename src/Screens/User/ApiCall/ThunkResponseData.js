@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { View, Text, StyleSheet, FlatList,Dimensions } from 'react-native'
-import { getUsers } from '../../Redux/ApiCalls/newsSlice'
+import { getUsers } from '../../../Redux/ApiCalls/newsSlice'
 import Icon from 'react-native-vector-icons/AntDesign'
-import HeaderView from '../../components/HeaderView/HeaderView'
+import HeaderView from '../../../components/HeaderView/HeaderView'
 
 
 const deviceWidth = Dimensions.get('screen').width

@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet, Dimensions, TextInput, Button, Alert, BackHandler } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAuthUserData, } from '../Redux/loginReducer'
+import { getAuthUserData, } from '../../Redux/loginReducer'
 import { Formik } from 'formik'
-import { loginInitialValuesSchema, loginValidationSchema } from '../utils/globalConstant'
-import Loader from '../components/Loader'
+import { loginInitialValuesSchema, loginValidationSchema } from '../../utils/globalConstant'
+import Loader from '../../components/Loader'
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 

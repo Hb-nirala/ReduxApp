@@ -39,8 +39,8 @@ const ThunkPostData = (props) => {
         <View style={styles.viewStyle}>
             <HeaderView
                 Title={'Post Data'}
-                onPress={() => { props.navigation.goBack() }}
-                style={styles.headerViewStyle}
+                onBackPress={() => { props.navigation.goBack() }}
+                // style={styles.headerViewStyle}
             />
             <TextInput style={styles.input}
                 placeholder="Enter Name"

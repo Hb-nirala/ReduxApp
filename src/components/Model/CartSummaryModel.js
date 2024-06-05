@@ -1,32 +1,31 @@
-import { View, Text, Modal, StyleSheet, FlatList } from 'react-native'
 import React, { useEffect } from 'react'
-import ReactButton from '../Buttons/ReactButton'
-import { useSelector } from 'react-redux'
+import { View, Text, Modal, StyleSheet, FlatList } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 import HeaderBoldText from '../Text/HeaderBoldText'
 import { appDimension } from '../../utils/globalConstant'
 import { calculateMyCartAmount } from '../../Redux/CartRedux/CartAction'
+import HeaderView from '../HeaderView/HeaderView'
+import ReactButton from '../Buttons/ReactButton'
 
-const CartSummaryModel = ({ visible, closePress }) => {
-    const items = useSelector((state) => state.cartReducer.numOfItem)
-    console.log("items==", items);
+const CartSummaryModel = ({ visible, closePress,onSuccessPress }) => {
+    const dispatch = useDispatch()
+    const { numOfItem, price } = useSelector((state) => state.cartReducer)
+    // console.log("numOfItem============", numOfItem);
+    // console.log("price============", price);
 
-    // const itemDetails = () =>{
-    //     items.forEach(element => {
-    //         if(element.id == element.id)
-
-    //     });
-    // }
-
-    useEffect(()=>{
-        calculateMyCartAmount(items)
-    },[])
+    useEffect(() => {
+        dispatch(calculateMyCartAmount(numOfItem))
+    }, [visible])
 
     const renderAddedItemToCart = ({ item }) => {
-        console.log('item======', item);
+        // console.log('item======', item);
         return (
             <View style={styles.itemContainerStyle}>
-                <Text style={styles.itemTextStyle}>{item?.itemName}</Text>
-                <Text style={styles.itemTextStyle}>{item?.itemPrice}</Text>
+                <View style={styles.itemInnerContainerStyle}>
+                    <Text style={styles.itemTextStyle}>{item?.itemName}</Text>
+                    <Text style={styles.itemTextStyle}>{item?.quantity}</Text>
+                </View>
+                <Text style={styles.itemTextStyle}>{`₹${item?.quantity * item?.itemPrice}`}</Text>
             </View>
 
         )
@@ -35,14 +34,21 @@ const CartSummaryModel = ({ visible, closePress }) => {
     return (
         <Modal
             visible={visible}
+            animationType="slide"
         >
-            <HeaderBoldText>{"My Cart"}</HeaderBoldText>
+            <HeaderView
+                Title={'My Cart'}
+                rightIconPress={closePress}
+            />
             <View style={styles.modelContainerStyle}>
                 <FlatList
-                    data={items}
+                    data={numOfItem}
                     renderItem={renderAddedItemToCart}
                 />
-                <ReactButton buttonTitle={'Done'} onPress={closePress} />
+                {
+                    price ? <HeaderBoldText>{`Total Amount :- ${price}`}</HeaderBoldText> : null
+                }
+                <ReactButton buttonTitle={'Done'} onPress={onSuccessPress} />
             </View>
 
         </Modal>
@@ -68,6 +74,16 @@ const styles = StyleSheet.create({
         borderBottomColor: 'gray',
         borderStyle: 'solid',
         borderBottomWidth: 1,
-    }
+    },
+    itemInnerContainerStyle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: (appDimension.deviceWidth / 2) - 20,
+    },
+    headerViewStyle: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'red',
+    },
 })
 export default CartSummaryModel

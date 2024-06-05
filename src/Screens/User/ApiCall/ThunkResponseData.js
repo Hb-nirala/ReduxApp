@@ -40,7 +40,7 @@ const ThunkResponseData = (props) => {
     <View style={styles.viewStyle}>
       <HeaderView
       Title={`User's Data`}
-      onPress={()=>{props.navigation.goBack()}}
+      onBackPress={()=>{props.navigation.goBack()}}
       />
       {loading ? <Text>Loading...</Text> :
         <FlatList

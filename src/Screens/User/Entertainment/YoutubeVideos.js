@@ -24,7 +24,7 @@ const YoutubeVideos = (props) => {
   return (
     <>
       <HeaderView
-        onPress={() => { props.navigation.goBack() }}
+        onBackPress={() => { props.navigation.goBack() }}
         Title={'Entertainment'}
       />
       <View>

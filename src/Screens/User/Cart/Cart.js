@@ -91,7 +91,8 @@ const Cart = (props) => {
                 null}
             <CartSummaryModel
                 visible={shoppingSummary}
-                closePress={() => setShoppingSummary(false)} />
+                closePress={() => setShoppingSummary(false)} 
+                onSuccessPress={()=>{console.log("onSuccessPress");}}/>
         </View>
     )
 }

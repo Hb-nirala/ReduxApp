@@ -318,8 +318,8 @@ const ApiResponse = (props) => {
         <View style={styles.containerStyle}>
             <HeaderView
                 Title={'Api Response'}
-                onPress={() => { props.navigation.goBack() }}
-                style={styles.headerViewStyle}
+                onBackPress={() => { props.navigation.goBack() }}
+                // style={styles.headerViewStyle}
             />
             <View style={styles.viewStyle}>
 

@@ -1,18 +1,19 @@
-import { View, Text, StyleSheet, Dimensions, FlatList, Image, Platform, BackHandler } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, FlatList, Image, Platform, BackHandler, TouchableOpacity, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { cartItemArray } from '../../../utils/globalConstant'
-import Icon from 'react-native-vector-icons/AntDesign'
 import { useDispatch, useSelector } from 'react-redux'
-import { addItem } from '../../../Redux/CartRedux/CartAction'
+import { addItem, buyMyCartProduct } from '../../../Redux/CartRedux/CartAction'
 import CartSummaryModel from '../../../components/Model/CartSummaryModel'
 import { TabHeaderTitle } from '../../../utils/appStrings'
 import HeaderBoldText from '../../../components/Text/HeaderBoldText'
+import Loader from '../../../components/Loader'
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
 
 const Cart = (props) => {
     const [shoppingSummary, setShoppingSummary] = useState(false)
+    const [showLoader, setShowLoader] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -53,6 +54,16 @@ const Cart = (props) => {
         return true
     }
 
+    const handleBuyMyCartProduct = () => {
+        setShoppingSummary(false)
+        dispatch(buyMyCartProduct(items))
+        setShowLoader(true)
+        setTimeout(() => {
+            setShowLoader(false)
+            Alert.alert("", "You have buy Successfully.")
+        }, 10000);
+    }
+
     const renderItem = ({ item }) => {
         return (
             <View style={styles.itemViewStyle}>
@@ -83,16 +94,17 @@ const Cart = (props) => {
                         <Text style={styles.cartitemTextStyle}>{`Total Quantity(${items.length})`}</Text>
                         <Text style={styles.cartitemTextStyle}>{`Total Amount ₹${calculateTotalPrice()}`}</Text>
                     </View>
-                    <View style={styles.buyButtonViewStyle}>
-                        <Text style={styles.itemTextStyle} onPress={() => { shoppingSummary ? null : setShoppingSummary(true) }}>Buy</Text>
-                    </View>
+                    <TouchableOpacity style={styles.buyButtonViewStyle} onPress={() => { setShoppingSummary(true) }}>
+                        <Text style={styles.itemTextStyle}>Buy</Text>
+                    </TouchableOpacity>
                 </View>
                 :
                 null}
             <CartSummaryModel
                 visible={shoppingSummary}
-                closePress={() => setShoppingSummary(false)} 
-                onSuccessPress={()=>{console.log("onSuccessPress");}}/>
+                closePress={() => setShoppingSummary(false)}
+                onSuccessPress={() => { handleBuyMyCartProduct() }} />
+            <Loader showLoader={showLoader} />
         </View>
     )
 }

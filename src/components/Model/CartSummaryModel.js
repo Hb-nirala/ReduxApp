@@ -6,6 +6,7 @@ import { appDimension } from '../../utils/globalConstant'
 import { calculateMyCartAmount } from '../../Redux/CartRedux/CartAction'
 import HeaderView from '../HeaderView/HeaderView'
 import ReactButton from '../Buttons/ReactButton'
+import Loader from '../Loader'
 
 const CartSummaryModel = ({ visible, closePress,onSuccessPress }) => {
     const dispatch = useDispatch()
@@ -50,7 +51,6 @@ const CartSummaryModel = ({ visible, closePress,onSuccessPress }) => {
                 }
                 <ReactButton buttonTitle={'Done'} onPress={onSuccessPress} />
             </View>
-
         </Modal>
     )
 }

@@ -1,8 +1,9 @@
-import { ADD_ITEM, CALCULATE_MY_CART_AMOUNT } from "./CartAction";
+import { ADD_ITEM, BUY_MY_CART_PRODUCTS, CALCULATE_MY_CART_AMOUNT } from "./CartAction";
 
 const initialState = {
     price: 0,
     numOfItem: [],
+    isLoading: false
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -40,7 +41,17 @@ const cartReducer = (state = initialState, action) => {
             }
             return {
                 ...state,
-                price: calculateTotalPrice(selectedItemArray)
+                price: calculateTotalPrice(selectedItemArray),
+                isLoading : true
+            };
+        }
+        case BUY_MY_CART_PRODUCTS: {
+            const selectedItemArray = action.payload
+            console.log("BUY_MY_CART_PRODUCTS",selectedItemArray);
+            return {
+                ...state,
+                numOfItem : [],
+                isLoading : true
             };
         }
         default:

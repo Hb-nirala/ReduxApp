@@ -1,4 +1,5 @@
 export const ADD_ITEM = "ADD_ITEM";
+export const REMOVE_ITEM = "REMOVE_ITEM";
 export const CALCULATE_MY_CART_AMOUNT = "CALCULATE_MY_CART_AMOUNT"
 export const BUY_MY_CART_PRODUCTS = "BUY_MY_CART_PRODUCTS"
 
@@ -15,4 +16,9 @@ export const calculateMyCartAmount = selectedItemArray => ({
 export const buyMyCartProduct = selectedItemArray => ({
     type: BUY_MY_CART_PRODUCTS,
     payload: selectedItemArray
+});
+
+export const removeItemFromCart = ItemData => ({
+    type: REMOVE_ITEM,
+    payload: ItemData
 });

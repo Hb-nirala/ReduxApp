@@ -41,7 +41,8 @@ const UserNavigator = () => {
 
     return (
         <Tab.Navigator screenOptions={{
-            headerShown: false
+            headerShown: false,
+            tabBarHideOnKeyboard: true,
         }}
             initialRouteName='Home'>
             <Tab.Screen name="Home" component={HomeNavigator}

@@ -2,11 +2,14 @@ import { View, Text, StyleSheet, Dimensions, FlatList, Image, Platform, BackHand
 import React, { useEffect, useState } from 'react'
 import { cartItemArray } from '../../../utils/globalConstant'
 import { useDispatch, useSelector } from 'react-redux'
-import { addItem, buyMyCartProduct } from '../../../Redux/CartRedux/CartAction'
+import { addItem, buyMyCartProduct, calculateMyCartAmount, removeItemFromCart } from '../../../Redux/CartRedux/CartAction'
 import CartSummaryModel from '../../../components/Model/CartSummaryModel'
 import { TabHeaderTitle } from '../../../utils/appStrings'
 import HeaderBoldText from '../../../components/Text/HeaderBoldText'
 import Loader from '../../../components/Loader'
+import Icon from 'react-native-vector-icons/AntDesign'
+import FontRegularText from '../../../components/Text/FontRegularText'
+import FontExtraBoldText from '../../../components/Text/FontExtraBoldText'
 
 const deviceWidth = Dimensions.get('screen').width
 const deviceHeight = Dimensions.get('screen').height
@@ -18,33 +21,30 @@ const Cart = (props) => {
     const dispatch = useDispatch()
 
     const items = useSelector((state) => state.cartReducer.numOfItem)
+    const totalPrice = useSelector((state) => state.cartReducer.price)
 
+    const updatedCartItemArray = cartItemArray.map(item => {
+        const match = items.find(i => i.id === item.id);
+        return {
+            ...item,
+            quantity: match ? match.quantity : 0
+        };
+    });
 
-    const calculateTotalPrice = () => {
-        // let priceArray = []
-        let totalPrice = 0
-        items.forEach(element => {
-            totalPrice = totalPrice + element.itemPrice
-            // console.log("price", element.itemPrice);
-            // priceArray.push(element.itemPrice)
-        });
-        console.log("priceArray", totalPrice);
-        return totalPrice
-    }
 
     useEffect(() => {
-        calculateTotalPrice()
-    }, [items])
+        dispatch(calculateMyCartAmount(items))
+    }, [items,updatedCartItemArray])
 
     useEffect(() => {
         if (Platform.OS === 'android') {
             BackHandler.addEventListener('hardwareBackPress', backButtonHandler)
         }
-        return () => {
-            if (Platform.OS === 'android') {
-                BackHandler.remove()
-            }
-        }
+        // return () => {
+        //     if (Platform.OS === 'android') {
+        //         BackHandler.remove()
+        //     }
+        // }
         // BackHandler.exitApp()
         // return () => BackHandler.removeEventListener('hardwareBackPress', backButtonHandler)
     }, [])
@@ -72,10 +72,23 @@ const Cart = (props) => {
                     style={styles.imageStyle} />
                 <View style={styles.itemInfoStyle}>
                     <Text style={styles.itemTextStyle}>{item.itemName}</Text>
-                    <Text style={styles.itemTextStyle}>MRP :-  ₹{item.itemPrice}</Text>
+                    <FontRegularText style={styles.itemTextStyle}>MRP :-  ₹{item.itemPrice}</FontRegularText>
                 </View>
                 <View style={styles.buttonViewStyle}>
-                    <Text style={styles.itemTextStyle} onPress={() => { dispatch(addItem(item)) }}>Add</Text>
+                    <Icon
+                        name={'pluscircle'} size={20}
+                        color={'white'}
+                        onPress={() => { dispatch(addItem(item)) }}
+                        style={styles.addIconStyle}
+                    />
+                    {item.quantity > 0 ? <FontRegularText style={styles.itemQtyTextStyle}>{item.quantity}</FontRegularText> : null}
+                    {item.quantity > 0 ? <Icon
+                        onPress={() => { dispatch(removeItemFromCart(item)) }}
+                        name={'minuscircle'}
+                        size={20}
+                        color={'white'}
+                        style={styles.addIconStyle}
+                    /> : null}
                 </View>
             </View>
         )
@@ -84,18 +97,18 @@ const Cart = (props) => {
         <View style={styles.viewStyle}>
             <HeaderBoldText>{TabHeaderTitle.cart}</HeaderBoldText>
             <FlatList
-                data={cartItemArray}
+                data={updatedCartItemArray}
                 style={{ flex: 1 }}
                 renderItem={renderItem}
             />
             {items.length > 0 ?
                 <View style={styles.byuTabStyle}>
                     <View style={styles.cartItemViewStyle}>
-                        <Text style={styles.cartitemTextStyle}>{`Total Quantity(${items.length})`}</Text>
-                        <Text style={styles.cartitemTextStyle}>{`Total Amount ₹${calculateTotalPrice()}`}</Text>
+                        <Text style={styles.cartitemTextStyle}>{`Total Items(${items.length})`}</Text>
+                        <Text style={styles.cartitemTextStyle}>{`Total Amount ₹${totalPrice}`}</Text>
                     </View>
                     <TouchableOpacity style={styles.buyButtonViewStyle} onPress={() => { setShoppingSummary(true) }}>
-                        <Text style={styles.itemTextStyle}>Buy</Text>
+                        <Text style={styles.buyButtonTextStyle}>Buy</Text>
                     </TouchableOpacity>
                 </View>
                 :
@@ -140,7 +153,8 @@ const styles = StyleSheet.create({
     },
     itemTextStyle: {
         color: 'rgb(255,255,255)',
-        fontSize: 25,
+        fontSize: 15,
+        textAlign:'left'
     },
     imageStyle: {
         width: 70,
@@ -153,16 +167,9 @@ const styles = StyleSheet.create({
     },
     buttonViewStyle: {
         alignSelf: 'center',
-        // alignItems: 'center',
-        // justifyContent: 'space-between',
-        // flexDirection: 'row',
-        // width: deviceWidth * 0.2,
     },
     buyButtonViewStyle: {
-        // alignSelf: 'center',
         alignItems: 'center',
-        // justifyContent: 'space-between',
-        // flexDirection: 'row',
         width: deviceWidth * 0.4,
         backgroundColor: 'green',
         paddingVertical: 2,
@@ -186,6 +193,18 @@ const styles = StyleSheet.create({
     cartitemTextStyle: {
         color: 'rgb(255,255,255)',
         fontSize: 12,
+    },
+    itemQtyTextStyle: {
+        color: 'rgb(255,255,255)',
+        fontSize: 12,
+        paddingTop:4,
+    },
+    addIconStyle:{
+        padding:1,
+    },
+    buyButtonTextStyle:{
+        fontSize: 25,
+        color:'rgb(255,255,255)',
     }
 })
 export default Cart

@@ -26,11 +26,11 @@ const Home = (props) => {
         if (Platform.OS === 'android') {
             BackHandler.addEventListener('hardwareBackPress', backButtonHandler)
         }
-        return () => {
-            if (Platform.OS === 'android') {
-                BackHandler.remove()
-            }
-        }
+        // return () => {
+        //     if (Platform.OS === 'android') {
+        //         BackHandler.remove()
+        //     }
+        // }
         // BackHandler.exitApp()
         // return () => BackHandler.removeEventListener('hardwareBackPress', backButtonHandler)
     }, [])
@@ -43,9 +43,22 @@ const Home = (props) => {
     const dispatch = useDispatch()
 
     const onLogout = () => {
-        Alert.alert('Logout Done')
-        dispatch(onUserLogout())
-        props.navigation.navigate('Login')
+        Alert.alert('',"Are you sure you want to logout?",
+            [
+                {
+                    text: 'No',
+                    onPress: () => null,
+                    style: 'cancel',
+                },
+                {
+                    text: 'Yes',
+                    onPress: () => {
+                        dispatch(onUserLogout())
+                        props.navigation.navigate('Login')
+                    }
+                }
+            ]
+        )
     }
 
     const onEditItem = (item) => {

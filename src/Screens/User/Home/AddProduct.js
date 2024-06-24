@@ -43,7 +43,7 @@ const AddProduct = (props) => {
         <ScrollView style={styles.scrollViewStyle}>
             <Icon name='arrowleft' size={25} onPress={() => { props.navigation.navigate('Home'), dispatch(setEditItem({}, '')) }} color='black' style={{ marginLeft: 10, marginTop: 10 }} />
             <View style={styles.viewStyle}>
-                {editProductItem ? <Text style={styles.textStyle}>EditProductData</Text> : <Text style={styles.textStyle}>AddProduct</Text>}
+                {editProductItem ? <Text style={styles.textStyle}>Edit Task</Text> : <Text style={styles.textStyle}>Add Task</Text>}
                 <TextInput style={styles.input}
                     placeholder="Enter Product Name"
                     onChangeText={(text) => { setProductName(text) }}
